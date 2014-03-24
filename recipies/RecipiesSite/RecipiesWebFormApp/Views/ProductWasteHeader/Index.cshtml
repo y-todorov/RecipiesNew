@@ -1,0 +1,38 @@
+﻿@using InventoryManagementMVC.Extensions
+@using InventoryManagementMVC.Models;
+@using RecipiesModelNS;
+
+
+@model IEnumerable<ProductWasteHeaderViewModel>
+
+@(
+ Html.Kendo().Grid(Model)
+                .Name("ProductWasteHeaderGrid")
+            .AddDefaultOptions()
+            .DataSource(dataSource => dataSource
+                .Ajax()
+                    .Read("Read", "ProductWasteHeader")
+                    .Create("Create", "ProductWasteHeader")
+                    .Update("Update", "ProductWasteHeader")
+                        .Destroy("Destroy", "ProductWasteHeader")).ClientDetailTemplateId("template")
+)
+
+
+<script id="template" type="text/kendo-tmpl">
+    @(Html.Kendo().Grid<ProductWasteViewModel>()
+                  .Name("ProductWasteViewModelGrid_#=ProductWasteHeaderId#")
+                  .AddDefaultOptions(true, false, isCreateVisible:false)
+          .DataSource(dataSource => dataSource
+              .Ajax()
+              .Batch(true)
+              .PageSize(5)
+              .Model(m => m.Id(p => p.WasteId))
+                      .Read("Read", "ProductWaste", new { productWasteHeaderId = "#=ProductWasteHeaderId#" })
+                                      .Create("Create", "ProductWaste", new { productWasteHeaderId = "#=ProductWasteHeaderId#" })
+                      .Update("Update", "ProductWaste")
+                      .Destroy("Destroy", "ProductWaste")
+          )
+          .ToClientTemplate()
+
+    )
+</script>

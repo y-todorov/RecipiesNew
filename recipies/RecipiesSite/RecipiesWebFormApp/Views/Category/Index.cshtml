@@ -1,0 +1,41 @@
+﻿@using InventoryManagementMVC.Extensions
+@using InventoryManagementMVC.Models;
+
+@model IEnumerable<CategoryViewModel>
+
+@(
+        Html.Kendo().Grid(Model)
+            .Name("CategoryViewModelGrid")
+            .AddDefaultOptions()
+            .DataSource(dataSource => dataSource
+                .Ajax()
+                .Create("Create", "Category")
+                .Read("Read", "Category")
+                .Update("Update", "Category")
+                .Destroy("Destroy", "Category"))
+            .ClientDetailTemplateId("template")
+      )
+
+<script id="template" type="text/kendo-tmpl">
+    @(Html.Kendo().TabStrip()
+          .Name("tabStrip_#=CategoryId#")
+          .SelectedIndex(0)
+          .Animation(animation => animation.Open(open => open.Fade(FadeDirection.In).Duration(AnimationDuration.Fast)))
+          .Items(items =>
+          {
+              items.Add().Text("Products").Content(@<text>
+                    @(Html.Kendo().Grid<ProductViewModel>()
+                          .Name("Products_#=CategoryId#")
+                          .AddReadOnlyOptions(true)
+                          .DataSource(dataSource => dataSource
+                              .Ajax()
+                              .Read(read => read.Action("ReadProducts", "Category", new {categoryId = "#=CategoryId#"}))
+                          )
+                          .ToClientTemplate()
+                          )
+                </text>
+                  );
+          })
+          .ToClientTemplate()
+          )
+</script>

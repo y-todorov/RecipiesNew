@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C50145E6-A244-4F1F-B41F-90D1925B4A00}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RecipiesModelNS</RootNamespace>
+    <AssemblyName>DynamicApplicationModel</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>OpenAccessAssemblies\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>OpenAccessAssemblies\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Web" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ContextFactory.cs" />
+    <Compile Include="Customer.cs">
+      <DependentUpon>RecipiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Customer.partial.cs" />
+    <Compile Include="C__RecipiesDataBase.cs">
+      <DependentUpon>RecipiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Department.cs">
+      <DependentUpon>RecipiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Department.partial.cs" />
+    <Compile Include="EmailTemplate.cs">
+      <DependentUpon>RecipiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmailTemplate.partial.cs" />
+    <Compile Include="Employee.cs">
+      <DependentUpon>RecipiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Employee.partial.cs" />
+    <Compile Include="EmployeeDepartment.cs">
+      <DependentUpon>RecipiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeDepartment.partial.cs" />
+    <Compile Include="Inventory.cs">
+      <DependentUpon>RecipiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory.partial.cs" />
+    <Compile Include="PaymentType.cs">
+      <DependentUpon>RecipiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentType.partial.cs" />
+    <Compile Include="Product.cs">
+      <DependentUpon>RecipiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductIngredient.cs">
+      <DependentUpon>RecipiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductWasteHeader.partial.cs" />
+    <Compile Include="ProductWasteHeader.cs">
+      <DependentUpon>RecipiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RecipeIngredient.partial.cs" />
+    <Compile Include="ProductInventoryHeader.partial.cs" />
+    <Compile Include="Product.partial.cs" />
+    <Compile Include="ProductCategory.cs">
+      <DependentUpon>RecipiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductCategory.partial.cs" />
+    <Compile Include="ProductHistory.cs">
+      <DependentUpon>RecipiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductHistory.partial.cs" />
+    <Compile Include="ProductInventory.cs">
+      <DependentUpon>RecipiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductInventory.partial.cs" />
+    <Compile Include="ProductInventoryHeader.cs">
+      <DependentUpon>RecipiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductVendor.cs">
+      <DependentUpon>RecipiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductVendor.partial.cs" />
+    <Compile Include="ProductWaste.cs">
+      <DependentUpon>RecipiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PurchaseOrderDetail.cs">
+      <DependentUpon>RecipiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseOrderDetail.partial.cs" />
+    <Compile Include="PurchaseOrderHeader.cs">
+      <DependentUpon>RecipiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseOrderHeader.partial.cs" />
+    <Compile Include="PurchaseOrderStatu.cs">
+      <DependentUpon>RecipiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Recipe.cs">
+      <DependentUpon>RecipiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Recipe.partial.cs" />
+    <Compile Include="RecipeIngredient.cs">
+      <DependentUpon>RecipiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductIngredient.partial.cs" />
+    <Compile Include="RecipeInventory.cs">
+      <DependentUpon>RecipiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RecipeWaste.cs">
+      <DependentUpon>RecipiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RecipiesEntities.partial.cs" />
+    <Compile Include="RecipiesModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecipiesModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RecipiesModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecipiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RecipiesModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecipiesModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="RecipiesModel.partial.cs" />
+    <Compile Include="SalesOrderDetail.cs">
+      <DependentUpon>RecipiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesOrderDetail.partial.cs" />
+    <Compile Include="SalesOrderHeader.cs">
+      <DependentUpon>RecipiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesOrderHeader.partial.cs" />
+    <Compile Include="SalesOrderStatu.cs">
+      <DependentUpon>RecipiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesOrderStatus.partial.cs" />
+    <Compile Include="Shift.cs">
+      <DependentUpon>RecipiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Shift.partial.cs" />
+    <Compile Include="ShipMethod.cs">
+      <DependentUpon>RecipiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShipMethod.partial.cs" />
+    <Compile Include="Store.cs">
+      <DependentUpon>RecipiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Store.partial.cs" />
+    <Compile Include="UnitMeasure.cs">
+      <DependentUpon>RecipiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UnitMeasure.partial.cs" />
+    <Compile Include="Vendor.cs">
+      <DependentUpon>RecipiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Vendor.partial.cs" />
+    <Compile Include="Waste.cs">
+      <DependentUpon>RecipiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Waste.partial.cs" />
+    <Compile Include="YordanBaseEntity.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="RecipiesModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>RecipiesModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="RecipiesModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RecipiesModel.edmx</DependentUpon>
+      <LastGenOutput>RecipiesModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="RecipiesModel.edmx.diagram">
+      <DependentUpon>RecipiesModel.edmx</DependentUpon>
+    </None>
+    <None Include="RecipiesModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RecipiesModel.edmx</DependentUpon>
+      <LastGenOutput>RecipiesModel.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="OpenAccessAssemblies\EntityFramework.dll" />
+    <Content Include="OpenAccessAssemblies\EntityFramework.SqlServer.dll" />
+    <Content Include="OpenAccessAssemblies\Telerik.Reporting.dll" />
+    <Content Include="OpenAccessAssemblies\Telerik.ReportViewer.WebForms.dll" />
+    <Content Include="OpenAccessAssemblies\Typesafe.Mailgun.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

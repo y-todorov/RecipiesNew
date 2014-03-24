@@ -1,0 +1,13 @@
+﻿@model object
+           
+@(
+        Html.Kendo().ComboBoxFor(m => m)
+            .BindTo(((SelectList) ViewData[ViewData.TemplateInfo.GetFullHtmlFieldName("") + "_Data"]).OrderBy(it => it.Text))
+            .Filter(FilterType.Contains)
+            .IgnoreCase(true)
+            .Placeholder("Select ...")
+            .Suggest(false)
+            .MinLength(0)
+            .Animation(pab => { pab.Open(eb => eb.Duration(AnimationDuration.Fast)).Close(eb => eb.Duration(AnimationDuration.Fast)); })
+            .DataSource(ros => { ros.ServerFiltering(false); })
+      )

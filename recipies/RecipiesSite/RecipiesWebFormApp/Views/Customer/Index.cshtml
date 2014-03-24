@@ -1,0 +1,16 @@
+﻿@using InventoryManagementMVC.Extensions
+@using InventoryManagementMVC.Models;
+
+@model IEnumerable<CustomerViewModel>
+
+@(
+        Html.Kendo().Grid(Model)
+            .Name("CustomerViewModelGrid")
+            .AddDefaultOptions()
+            .DataSource(dataSource => dataSource
+                .Ajax()
+                .Create("Create", "Customer")
+                .Read("Read", "Customer")
+                .Update("Update", "Customer")
+                .Destroy("Destroy", "Customer"))
+      )

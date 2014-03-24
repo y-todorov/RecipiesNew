@@ -1,0 +1,37 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SiteLogin.master.cs" Inherits="RecipiesWebFormApp.SiteLogin" %>
+
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head runat="server">
+        <title>Log in</title>
+    </head>
+    <body>
+        <form id="form1" runat="server">
+            <asp:ScriptManager ID="ScriptManager1" runat="server">
+                <CompositeScript>
+                    <Scripts>
+                        <asp:ScriptReference Path="~/Scripts/GoogleAnalytics.js" />
+                        <asp:ScriptReference Path="~/Scripts/WebForms/MSAjax/MicrosoftAjax.js" />
+                        <asp:ScriptReference Path="~/Scripts/WebForms/MSAjax/MicrosoftAjaxWebForms.js" />
+                    </Scripts>
+                </CompositeScript>
+            </asp:ScriptManager>
+            <%-- <telerik:RadScriptManager runat="server" AjaxFrameworkMode="Disabled" OutputCompression="Forced">
+            <CompositeScript>
+                <Scripts>
+                    <asp:ScriptReference Path="~/Scripts/GoogleAnalytics.js" />
+                    <asp:ScriptReference Path="~/Scripts/WebForms/MSAjax/MicrosoftAjax.js" />
+                    <asp:ScriptReference Path="~/Scripts/WebForms/MSAjax/MicrosoftAjaxWebForms.js" />
+                </Scripts>
+            </CompositeScript>
+        </telerik:RadScriptManager>--%>
+            <telerik:RadFormDecorator ID="RadFormDecorator1" runat="server" DecoratedControls="All" Skin="Silk" />
+            <div>
+                <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </form>
+    </body>
+</html>

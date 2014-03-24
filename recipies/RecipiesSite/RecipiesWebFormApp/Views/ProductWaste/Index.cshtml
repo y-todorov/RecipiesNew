@@ -1,0 +1,19 @@
+﻿@using InventoryManagementMVC.Extensions
+@using InventoryManagementMVC.Models;
+@using RecipiesModelNS;
+
+
+@model IEnumerable<ProductWasteViewModel>
+
+@(
+        Html.Kendo().Grid(Model)
+            .Name("ProductWasteViewModelGrid")
+            .AddDefaultOptions()
+            .AddToolbarOptions(isCreateVisible:false)
+            .DataSource(dataSource => dataSource
+                .Ajax()
+                .Read("Read", "ProductWaste")
+                .Create("Create", "ProductWaste")
+                .Update("Update", "ProductWaste")
+                .Destroy("Destroy", "ProductWaste"))
+      )

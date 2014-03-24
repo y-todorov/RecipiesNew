@@ -1,0 +1,18 @@
+﻿@using InventoryManagementMVC.Extensions
+@using InventoryManagementMVC.Models;
+@using RecipiesModelNS
+
+@model IEnumerable<UnitMeasureViewModel>
+
+@(
+        Html.Kendo().Grid(Model)
+            .Name("UnitMeasureViewModelGrid")
+            .AddDefaultOptions()
+            .DataSource(dataSource => dataSource
+                .Ajax()
+                .Create("Create", "UnitMeasure")
+                .Read("Read", "UnitMeasure")
+                .Update("Update", "UnitMeasure")
+                .Destroy("Destroy", "UnitMeasure")
+            )
+      )

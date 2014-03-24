@@ -1,0 +1,87 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipiesModel", "DynamicApplication\DynamicApplicationModel\RecipiesModel.csproj", "{C50145E6-A244-4F1F-B41F-90D1925B4A00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipiesWebFormApp", "RecipiesWebFormApp\RecipiesWebFormApp.csproj", "{86BDCA89-36F0-4884-99A5-DE0576D01188}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipiesReports", "RecipiesReports\RecipiesReports.csproj", "{B726482B-AEE9-4C3F-9AF6-9B60DF2B5F3E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpers", "Helpers\Helpers.csproj", "{A241735C-B9A0-4F9A-903C-E248C1C97990}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YordanCustomControls", "YordanCustomControls\YordanCustomControls.csproj", "{25F012A1-C5BB-4DFE-BE22-64CDD9C1B65B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F6BDF103-B387-46D5-9E52-AD53BE4CBA37}"
+	ProjectSection(SolutionItems) = preProject
+		AppHarbor.vsmdi = AppHarbor.vsmdi
+		Local.testsettings = Local.testsettings
+		Performance1.psess = Performance1.psess
+		WE2013-settings.xml = WE2013-settings.xml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcDonutCaching", "DevTrends.MvcDonutCaching\MvcDonutCaching.csproj", "{854E90C7-8320-4EB6-A286-24A8EE5EBE9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipiesUnitTests", "RecipiesUnitTests\RecipiesUnitTests\RecipiesUnitTests.csproj", "{4A1F5F18-0BF9-4CD5-AE85-7DB0EAC1FC98}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release.Public|Any CPU = Release.Public|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C50145E6-A244-4F1F-B41F-90D1925B4A00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C50145E6-A244-4F1F-B41F-90D1925B4A00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C50145E6-A244-4F1F-B41F-90D1925B4A00}.Release.Public|Any CPU.ActiveCfg = Release|Any CPU
+		{C50145E6-A244-4F1F-B41F-90D1925B4A00}.Release.Public|Any CPU.Build.0 = Release|Any CPU
+		{C50145E6-A244-4F1F-B41F-90D1925B4A00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C50145E6-A244-4F1F-B41F-90D1925B4A00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86BDCA89-36F0-4884-99A5-DE0576D01188}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86BDCA89-36F0-4884-99A5-DE0576D01188}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86BDCA89-36F0-4884-99A5-DE0576D01188}.Release.Public|Any CPU.ActiveCfg = Release|Any CPU
+		{86BDCA89-36F0-4884-99A5-DE0576D01188}.Release.Public|Any CPU.Build.0 = Release|Any CPU
+		{86BDCA89-36F0-4884-99A5-DE0576D01188}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86BDCA89-36F0-4884-99A5-DE0576D01188}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B726482B-AEE9-4C3F-9AF6-9B60DF2B5F3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B726482B-AEE9-4C3F-9AF6-9B60DF2B5F3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B726482B-AEE9-4C3F-9AF6-9B60DF2B5F3E}.Release.Public|Any CPU.ActiveCfg = Release|Any CPU
+		{B726482B-AEE9-4C3F-9AF6-9B60DF2B5F3E}.Release.Public|Any CPU.Build.0 = Release|Any CPU
+		{B726482B-AEE9-4C3F-9AF6-9B60DF2B5F3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B726482B-AEE9-4C3F-9AF6-9B60DF2B5F3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A241735C-B9A0-4F9A-903C-E248C1C97990}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A241735C-B9A0-4F9A-903C-E248C1C97990}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A241735C-B9A0-4F9A-903C-E248C1C97990}.Release.Public|Any CPU.ActiveCfg = Release|Any CPU
+		{A241735C-B9A0-4F9A-903C-E248C1C97990}.Release.Public|Any CPU.Build.0 = Release|Any CPU
+		{A241735C-B9A0-4F9A-903C-E248C1C97990}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A241735C-B9A0-4F9A-903C-E248C1C97990}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25F012A1-C5BB-4DFE-BE22-64CDD9C1B65B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25F012A1-C5BB-4DFE-BE22-64CDD9C1B65B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25F012A1-C5BB-4DFE-BE22-64CDD9C1B65B}.Release.Public|Any CPU.ActiveCfg = Release|Any CPU
+		{25F012A1-C5BB-4DFE-BE22-64CDD9C1B65B}.Release.Public|Any CPU.Build.0 = Release|Any CPU
+		{25F012A1-C5BB-4DFE-BE22-64CDD9C1B65B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25F012A1-C5BB-4DFE-BE22-64CDD9C1B65B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{854E90C7-8320-4EB6-A286-24A8EE5EBE9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{854E90C7-8320-4EB6-A286-24A8EE5EBE9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{854E90C7-8320-4EB6-A286-24A8EE5EBE9B}.Release.Public|Any CPU.ActiveCfg = Release.Public|Any CPU
+		{854E90C7-8320-4EB6-A286-24A8EE5EBE9B}.Release.Public|Any CPU.Build.0 = Release.Public|Any CPU
+		{854E90C7-8320-4EB6-A286-24A8EE5EBE9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{854E90C7-8320-4EB6-A286-24A8EE5EBE9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A1F5F18-0BF9-4CD5-AE85-7DB0EAC1FC98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A1F5F18-0BF9-4CD5-AE85-7DB0EAC1FC98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A1F5F18-0BF9-4CD5-AE85-7DB0EAC1FC98}.Release.Public|Any CPU.ActiveCfg = Release|Any CPU
+		{4A1F5F18-0BF9-4CD5-AE85-7DB0EAC1FC98}.Release.Public|Any CPU.Build.0 = Release|Any CPU
+		{4A1F5F18-0BF9-4CD5-AE85-7DB0EAC1FC98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A1F5F18-0BF9-4CD5-AE85-7DB0EAC1FC98}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = AppHarbor.vsmdi
+	EndGlobalSection
+EndGlobal

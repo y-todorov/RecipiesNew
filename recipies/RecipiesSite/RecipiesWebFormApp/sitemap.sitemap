@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<siteMap>
+  <siteMapNode title="Home" controller="home" action="index">
+    <siteMapNode title="Dashboard" controller="home" action="index">
+
+    </siteMapNode>
+    <!--<siteMapNode title="Charts">
+      <siteMapNode controller="product" action="index" title="Vendors">
+        <siteMapNode controller="product" action="index" title="Vendors purchase value per week" />
+      </siteMapNode>
+    </siteMapNode>-->
+
+    <siteMapNode title="Production">
+      <siteMapNode controller="product" action="index" title="Products" />
+      <siteMapNode controller="category" action="index" title="Categories" />
+      <siteMapNode controller="unitmeasure" action="index" title="Unit measures" />
+      <siteMapNode controller="store" action="index" title="Stores" />
+      <siteMapNode controller="recipe" action="index" title="Recipies" />
+      <siteMapNode controller="productinventoryheader" action="index" title="Product inventories" />
+
+      <!--<siteMapNode controller="productinventory" action="index" title="Product inventories" />-->
+      <siteMapNode controller="productwasteheader" action="index" title="Product wastes" />
+      <!--<siteMapNode controller="recipiewaste" action="index" title="Recipie wastes" />-->
+    </siteMapNode>
+    <siteMapNode title="Sales">
+      <siteMapNode controller="SalesOrderHeader" action="index" title="Sales orders" />
+      <siteMapNode controller="PaymentType" action="index" title="Payment types" />
+      <siteMapNode controller="Customer" action="index" title="Customers" />
+    </siteMapNode>
+    <siteMapNode title="Purchasing">
+      <siteMapNode controller="PurchaseOrderHeader" action="index" title="Purchase orders" />
+      <siteMapNode controller="PurchaseOrderDetail" action="index" title="Purchase order details" />
+      <siteMapNode controller="Vendor" action="index" title="Vendors" />
+      <siteMapNode controller="ProductVendor" action="index" title="Product vendors" />
+      <siteMapNode controller="ShipMethod" action="index" title="Ship methods" />
+    </siteMapNode>
+    <siteMapNode title="To the OLD site" controller="Home" action="NavigateToOldSite">
+    </siteMapNode>
+    <!--<siteMapNode title="Human resources">
+
+    </siteMapNode>
+    <siteMapNode title="History">
+
+    </siteMapNode>
+    <siteMapNode title="Admin">
+
+    </siteMapNode>
+    <siteMapNode title="Account">
+
+    </siteMapNode>-->
+  </siteMapNode>
+</siteMap>

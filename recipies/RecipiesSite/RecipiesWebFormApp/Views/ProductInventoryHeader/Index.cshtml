@@ -1,0 +1,93 @@
+﻿@using InventoryManagementMVC.Extensions
+@using InventoryManagementMVC.Models;
+
+@model IEnumerable<ProductInventoryHeaderViewModel>
+
+@(
+        Html.Kendo().Grid(Model)
+            .Name("ProductInventoryHeaderViewModelGrid")
+            .AddDefaultOptions()
+            .DataSource(dataSource => dataSource
+                .Ajax()
+                .Create("Create", "ProductInventoryHeader")
+                .Read("Read", "ProductInventoryHeader")
+                .Update("Update", "ProductInventoryHeader")
+                .Destroy("Destroy", "ProductInventoryHeader")).ClientDetailTemplateId("template")
+      )
+
+
+<script id="template" type="text/kendo-tmpl">
+    
+    @(Html.Kendo().TabStrip()
+          .Name("tabStrip_#=ProductInventoryHeaderId#")
+          .SelectedIndex(0)
+          .Animation(animation => animation.Open(open => open.Fade(FadeDirection.In).Duration(AnimationDuration.Fast)))
+          .Items(items =>
+          {
+              items.Add().Text("Products").Content(@<text>
+    @(Html.Kendo().Grid<ProductInventoryViewModel>()
+          .Name("ProductInventoryViewModelGrid_#=ProductInventoryHeaderId#")
+          .AddDefaultOptions(true, false, isCreateVisible: false)
+          .DataSource(dataSource => dataSource
+              .Ajax()
+              .Batch(true)
+              .PageSize(5)
+              .Model(m => m.Id(p => p.InventoryId))
+              .Read("Read", "ProductInventory", new {productInventoryHeaderId = "#=ProductInventoryHeaderId#"})
+              .Create("Create", "ProductInventory", new {productInventoryHeaderId = "#=ProductInventoryHeaderId#"})
+              .Update("Update", "ProductInventory")
+              .Destroy("Destroy", "ProductInventory")
+          )
+          .ToClientTemplate()
+
+          )
+            </text>
+                  );
+
+items.Add().Text("Purchase Orders Since Last Inventory").Content(@<text>
+                    @(Html.Kendo().Grid<PurchaseOrderDetailViewModel>()
+                                  .Name("PurchaseOrderDetailViewModel#=ProductInventoryHeaderId#")
+                          .AddReadOnlyOptions(true)
+                          .DataSource(dataSource => dataSource
+                              .Ajax()
+                              .Read(read => read.Action("ReadProductInventoryPurchaseOrders", "ProductInventoryHeader", new {productInventoryHeaderId = "#=ProductInventoryHeaderId#"}))
+                          )
+                          .ToClientTemplate()
+                          )
+            </text>
+                  );
+                  
+                   items.Add().Text("Sales Orders Since Last Inventory").Content(@<text>
+                    @(Html.Kendo().Grid<SalesOrderDetailViewModel>()
+                                  .Name("SalesOrderDetailViewModel#=ProductInventoryHeaderId#")
+                          .AddReadOnlyOptions(true)
+                          .DataSource(dataSource => dataSource
+                              .Ajax()
+                                      .Read(read => read.Action("ReadProductInventorySalesOrders", "ProductInventoryHeader", new { productInventoryHeaderId = "#=ProductInventoryHeaderId#" }))
+                          )
+                          .ToClientTemplate()
+                          )
+            </text>
+                  );
+
+              items.Add().Text("Wastes Since Last Inventory").Content(@<text>
+                    @(Html.Kendo().Grid<ProductWasteViewModel>()
+                                  .Name("ProductWasteViewModel#=ProductInventoryHeaderId#")
+                          .AddReadOnlyOptions(true)
+                          .DataSource(dataSource => dataSource
+                              .Ajax()
+                              .Read(read => read.Action("ReadProductInventoryWastes", "ProductInventoryHeader", new {productInventoryHeaderId = "#=ProductInventoryHeaderId#"}))
+                          )
+                          .ToClientTemplate()
+                          )
+            </text>
+                  );
+                  
+                  
+          })
+          .ToClientTemplate()
+          )
+   
+
+
+</script>

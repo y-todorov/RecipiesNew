@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <configSections>
+    <section name="appfail" type="AppfailReporting.AppfailConfiguration, AppfailReporting" />
+  </configSections>
+  <appSettings>
+    <!--This key is required becaouse error
+    WebForms UnobtrusiveValidationMode requires a ScriptResourceMapping for 'jquery'.
+    Please add a ScriptResourceMapping named jquery(case-sensitive). will be thrown.-->
+    <add key="ValidationSettings:UnobtrusiveValidationMode" value="None" />
+    <!--This is mandatory for RadStyleSheetManager to work-->
+    <add key="Telerik.Web.UI.StyleSheetFolders" value="~/Styles" />
+    <add key="YordanRadGridColumnMaxVisualLength" value="30" />
+     <!--CDN SETTINGS-->
+    <!--<add key="Telerik.ScriptManager.TelerikCdn" value="Enabled" />
+    <add key="Telerik.StyleSheetManager.TelerikCdn" value="Enabled" />-->
+    <!--THIS IS IMPORTANT TO COMBINE SCRIPTS RADSCRIPTMANAGER-->
+      <add key="Telerik.Web.UI.ScriptFolders" value="~/Scripts/;~/Scripts/WebForms/;"/>
+  </appSettings>
+  <connectionStrings>
+    <add name="Connection" connectionString="data source=804b3a50-697f-4e00-b7cc-a1e6015cf402.sqlserver.sequelizer.com;persist security info=True;user id=uehevqpfoljtplku;password=uhffcctREdsiocbJhjETidnG5q5jWtB25oyDasHUYHNVtA8EzVMz5NPr4FiTgi3k" providerName="System.Data.SqlClient" />
+    <add name="ConnectionConfig" connectionString="Server=0a1edf98-3fa2-408e-89ba-a21b00c0e6ae.sqlserver.sequelizer.com;Database=db0a1edf983fa2408e89baa21b00c0e6ae;User ID=sdrhfiojulwnbnnd;Password=vRVRUSsczN5VU3R57dyeY8ucKsMAQYHpjvfdWnm8WNYExVJ5T8FahBrwwTgBeZtJ;" providerName="System.Data.SqlClient" />
+  </connectionStrings>
+  <system.web>
+    <globalization uiCulture="en" culture="en-IE" />
+    <customErrors mode="On" defaultRedirect="~/ErrorPages/Error.aspx" redirectMode="ResponseRewrite">
+      <error statusCode="404" redirect="~/ErrorPages/Error404.aspx" />
+      <!--<error statusCode="500" redirect="~/ErrorPages/Error404.aspx" />-->
+    </customErrors>
+    <compilation debug="true" targetFramework="4.5">
+      <assemblies>
+        <add assembly="Microsoft.Build.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=B03F5F7F11D50A3A" />
+        <add assembly="System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=B03F5F7F11D50A3A" />
+        <add assembly="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=B77A5C561934E089" />
+        <add assembly="System.Speech, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" />
+        <add assembly="Telerik.ReportViewer.WebForms, Version=7.1.13.802, Culture=neutral, PublicKeyToken=a9d7983dfcc261be" />
+        <add assembly="Telerik.Reporting, Version=7.1.13.802, Culture=neutral, PublicKeyToken=a9d7983dfcc261be" />
+      </assemblies>
+      <buildProviders />
+    </compilation>
+    <httpRuntime targetFramework="4.5" />
+    <pages styleSheetTheme="DefaultTheme">
+      <namespaces>
+        <add namespace="AppfailReporting" />
+      </namespaces>
+    </pages>
+    <authentication mode="Forms">
+      <forms loginUrl="~/Account/Login" timeout="2880" defaultUrl="~/Default.aspx" />
+    </authentication>
+    <authorization>
+      <deny users="?" />
+    </authorization>
+    <profile defaultProvider="DefaultProfileProvider">
+      <providers>
+        <add name="DefaultProfileProvider" type="System.Web.Providers.DefaultProfileProvider, System.Web.Providers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" connectionStringName="Connection" applicationName="/" />
+      </providers>
+    </profile>
+    <membership defaultProvider="SqlProvider" userIsOnlineTimeWindow="15">
+      <providers>
+        <clear />
+        <add name="SqlProvider" type="System.Web.Security.SqlMembershipProvider" connectionStringName="ConnectionConfig" applicationName="/" enablePasswordRetrieval="false" enablePasswordReset="true" requiresQuestionAndAnswer="true" requiresUniqueEmail="true" passwordFormat="Hashed" />
+      </providers>
+    </membership>
+    <roleManager enabled="true">
+      <providers>
+        <!--<add connectionStringName="Connection" applicationName="/"
+          name="DefaultRoleProvider" type="System.Web.Providers.DefaultRoleProvider, System.Web.Providers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />-->
+      </providers>
+    </roleManager>
+    <!--
+            If you are deploying to a cloud environment that has multiple web server instances,
+            you should change session state mode from "InProc" to "Custom". In addition,
+            change the connection string named "DefaultConnection" to connect to an instance
+            of SQL Server (including SQL Azure and SQL  Compact) instead of to SQL Server Express.
+      -->
+    <sessionState mode="InProc" customProvider="DefaultSessionProvider">
+      <providers>
+        <add name="DefaultSessionProvider" type="System.Web.Providers.DefaultSessionStateProvider, System.Web.Providers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" connectionStringName="DefaultConnection" />
+      </providers>
+    </sessionState>
+    <httpHandlers>
+      <add path="Telerik.Web.UI.WebResource.axd" verb="*" type="Telerik.Web.UI.WebResource" validate="false" />
+      <add path="ChartImage.axd" verb="*" type="Telerik.Web.UI.ChartHttpHandler" validate="false" />
+      <add path="Telerik.Web.UI.SpellCheckHandler.axd" verb="*" type="Telerik.Web.UI.SpellCheckHandler" validate="false" />
+      <add path="Telerik.Web.UI.DialogHandler.aspx" verb="*" type="Telerik.Web.UI.DialogHandler" validate="false" />
+      <add path="Telerik.RadUploadProgressHandler.ashx" verb="*" type="Telerik.Web.UI.RadUploadProgressHandler" validate="false" />
+      <add path="Telerik.ReportViewer.axd" verb="*" type="Telerik.ReportViewer.WebForms.HttpHandler, Telerik.ReportViewer.WebForms, Version=7.1.13.802, Culture=neutral, PublicKeyToken=a9d7983dfcc261be" validate="true" />
+    </httpHandlers>
+    <httpModules>
+      <!-- Add this line exactly as is - the name value is important -->
+      <add name="RadUploadModule" type="Telerik.Web.UI.RadUploadHttpModule" />
+      <add name="RadCompression" type="Telerik.Web.UI.RadCompression" />
+      <add name="appfail" type="AppfailReporting.AppfailModule, AppfailReporting" />
+    </httpModules>
+  </system.web>
+  <system.webServer>
+    <defaultDocument>
+      <files>
+        <add value="~/Default.aspx" />
+      </files>
+    </defaultDocument>
+    <validation validateIntegratedModeConfiguration="false" />
+    <!--runAllManagedModulesForAllRequests="false" This should be false. Appfail set this to true and caused problems in getting js files in login screen-->
+    <modules runAllManagedModulesForAllRequests="false">
+      <remove name="RadUploadModule" />
+      <remove name="RadCompression" />
+      <add name="RadUploadModule" type="Telerik.Web.UI.RadUploadHttpModule" preCondition="integratedMode" />
+      <add name="RadCompression" type="Telerik.Web.UI.RadCompression" preCondition="integratedMode" />
+      <add name="appfail" type="AppfailReporting.AppfailModule, AppfailReporting" />
+    </modules>
+    <handlers>
+      <remove name="ChartImage_axd" />
+      <remove name="Telerik_Web_UI_SpellCheckHandler_axd" />
+      <remove name="Telerik_Web_UI_DialogHandler_aspx" />
+      <remove name="Telerik_RadUploadProgressHandler_ashx" />
+      <remove name="Telerik_Web_UI_WebResource_axd" />
+      <add name="ChartImage_axd" path="ChartImage.axd" type="Telerik.Web.UI.ChartHttpHandler" verb="*" preCondition="integratedMode" />
+      <add name="Telerik_Web_UI_SpellCheckHandler_axd" path="Telerik.Web.UI.SpellCheckHandler.axd" type="Telerik.Web.UI.SpellCheckHandler" verb="*" preCondition="integratedMode" />
+      <add name="Telerik_Web_UI_DialogHandler_aspx" path="Telerik.Web.UI.DialogHandler.aspx" type="Telerik.Web.UI.DialogHandler" verb="*" preCondition="integratedMode" />
+      <add name="Telerik_RadUploadProgressHandler_ashx" path="Telerik.RadUploadProgressHandler.ashx" type="Telerik.Web.UI.RadUploadProgressHandler" verb="*" preCondition="integratedMode" />
+      <add name="Telerik_Web_UI_WebResource_axd" path="Telerik.Web.UI.WebResource.axd" type="Telerik.Web.UI.WebResource" verb="*" preCondition="integratedMode" />
+      <add name="Telerik.ReportViewer.axd_*" path="Telerik.ReportViewer.axd" verb="*" type="Telerik.ReportViewer.WebForms.HttpHandler, Telerik.ReportViewer.WebForms, Version=7.1.13.802, Culture=neutral, PublicKeyToken=a9d7983dfcc261be" preCondition="integratedMode" />
+    </handlers>
+    <httpErrors errorMode="Custom" existingResponse="Replace" defaultPath="~/ErrorPages/Error.aspx">
+      <clear />
+      <error statusCode="404" prefixLanguageFilePath="" path="~/ErrorPages/Error404.aspx" responseMode="Redirect" />
+      <error statusCode="500" prefixLanguageFilePath="" path="~/ErrorPages/Error404.aspx" responseMode="Redirect" />
+    </httpErrors>
+  </system.webServer>
+  <appfail apiToken="JZyEgv6ijVWrr3rul3uihg" />
+</configuration>

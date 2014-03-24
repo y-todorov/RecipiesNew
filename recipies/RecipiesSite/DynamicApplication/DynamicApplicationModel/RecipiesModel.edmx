@@ -1,0 +1,2788 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RecipiesModelNS.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="EmailTemplate">
+          <Key>
+            <PropertyRef Name="EmailTemplateId" />
+          </Key>
+          <Property Name="EmailTemplateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="From" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Cc" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Bcc" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="1000" />
+          <Property Name="TextBody" Type="nvarchar" MaxLength="1000" />
+          <Property Name="HtmlBody" Type="nvarchar" MaxLength="1000" />
+          <Property Name="AttachmentName" Type="nvarchar" MaxLength="1000" />
+          <Property Name="IsDefault" Type="bit" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedByUser" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="__RecipiesDataBase">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="databaseName" Type="nvarchar" MaxLength="50" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="DepartmentId" />
+          </Key>
+          <Property Name="DepartmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedByUser" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="EmployeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="1000" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="1000" />
+          <Property Name="BirthDate" Type="datetime" />
+          <Property Name="HireDate" Type="datetime" />
+          <Property Name="Address" Type="nvarchar" MaxLength="1000" />
+          <Property Name="City" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Region" Type="nvarchar" MaxLength="1000" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Country" Type="nvarchar" MaxLength="1000" />
+          <Property Name="HomePhone" Type="nvarchar" MaxLength="1000" />
+          <Property Name="PreviousExperience" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedByUser" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Email" Type="nvarchar" MaxLength="1000" />
+          <Property Name="MobilePhone" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="EmployeeDepartment">
+          <Key>
+            <PropertyRef Name="EmployeeDepartmentId" />
+          </Key>
+          <Property Name="EmployeeDepartmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeId" Type="int" />
+          <Property Name="DepartmentId" Type="int" />
+          <Property Name="ShiftId" Type="int" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedByUser" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Shift">
+          <Key>
+            <PropertyRef Name="ShiftId" />
+          </Key>
+          <Property Name="ShiftId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="1000" />
+          <Property Name="StartHour" Type="datetime" />
+          <Property Name="EndHour" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedByUser" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Inventory">
+          <Key>
+            <PropertyRef Name="InventoryId" />
+          </Key>
+          <Property Name="InventoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ForDate" Type="date" />
+          <Property Name="AverageUnitPrice" Type="money" />
+          <Property Name="QuantityByDocuments" Type="float" />
+          <Property Name="ValueByDocuments" Type="float" StoreGeneratedPattern="Computed" />
+          <Property Name="StocktakeQuantity" Type="float" />
+          <Property Name="StocktakeValue" Type="float" StoreGeneratedPattern="Computed" />
+          <Property Name="DeficiencyQuantity" Type="float" StoreGeneratedPattern="Computed" />
+          <Property Name="DeficiencyValue" Type="float" StoreGeneratedPattern="Computed" />
+          <Property Name="SurplusQuantity" Type="float" StoreGeneratedPattern="Computed" />
+          <Property Name="SurplusValue" Type="float" StoreGeneratedPattern="Computed" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedByUser" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UnitMeasureId" Type="int" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="StoreId" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Code" Type="nvarchar" MaxLength="1000" />
+          <Property Name="UnitPrice" Type="money" />
+          <Property Name="UnitsInStock" Type="float" />
+          <Property Name="UnitsOnOrder" Type="float" />
+          <Property Name="ReorderLevel" Type="float" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedByUser" Type="nvarchar" MaxLength="1000" />
+          <Property Name="StockValue" Type="float" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductCategory">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedByUser" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="ProductHistory">
+          <Key>
+            <PropertyRef Name="ProductHistoryId" />
+          </Key>
+          <Property Name="ProductHistoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="UnitMeasureId" Type="int" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Code" Type="nvarchar" MaxLength="1000" />
+          <Property Name="UnitPrice" Type="money" />
+          <Property Name="UnitsInStock" Type="float" />
+          <Property Name="UnitsOnOrder" Type="float" />
+          <Property Name="Store" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ReorderLevel" Type="float" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedByUser" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="ProductIngredient">
+          <Key>
+            <PropertyRef Name="ProductIngredientId" />
+          </Key>
+          <Property Name="ProductIngredientId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RecipeId" Type="int" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="QuantityPerPortion" Type="float" />
+          <Property Name="Cost" Type="money" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedByUser" Type="nvarchar" MaxLength="1000" />
+          <Property Name="TotalValue" Type="float" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductInventory">
+          <Key>
+            <PropertyRef Name="InventoryId" />
+          </Key>
+          <Property Name="InventoryId" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="ProductInventoryHeaderId" Type="int" />
+        </EntityType>
+        <EntityType Name="ProductInventoryHeader">
+          <Key>
+            <PropertyRef Name="ProductInventoryHeaderId" />
+          </Key>
+          <Property Name="ProductInventoryHeaderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ForDate" Type="date" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedByUser" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="ProductWaste">
+          <Key>
+            <PropertyRef Name="WasteId" />
+          </Key>
+          <Property Name="WasteId" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="ProductWasteHeaderId" Type="int" />
+        </EntityType>
+        <EntityType Name="ProductWasteHeader">
+          <Key>
+            <PropertyRef Name="ProductWasteHeaderId" />
+          </Key>
+          <Property Name="ProductWasteHeaderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ForDate" Type="date" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedByUser" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Recipe">
+          <Key>
+            <PropertyRef Name="RecipeId" />
+          </Key>
+          <Property Name="RecipeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Description" Type="nvarchar" MaxLength="4000" />
+          <Property Name="ProductionValuePerPortion" Type="money" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedByUser" Type="nvarchar" MaxLength="1000" />
+          <Property Name="SellValuePerPortion" Type="money" />
+          <Property Name="GrossProfit" Type="numeric" Precision="38" Scale="14" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="RecipeIngredient">
+          <Key>
+            <PropertyRef Name="RecipeIngredientId" />
+          </Key>
+          <Property Name="RecipeIngredientId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParentRecipeId" Type="int" />
+          <Property Name="IngredientRecipeId" Type="int" />
+          <Property Name="QuantityPerPortion" Type="float" />
+          <Property Name="Cost" Type="money" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedByUser" Type="nvarchar" MaxLength="1000" />
+          <Property Name="TotalValue" Type="float" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RecipeInventory">
+          <Key>
+            <PropertyRef Name="InventoryId" />
+          </Key>
+          <Property Name="InventoryId" Type="int" Nullable="false" />
+          <Property Name="RecipeId" Type="int" />
+        </EntityType>
+        <EntityType Name="RecipeWaste">
+          <Key>
+            <PropertyRef Name="WasteId" />
+          </Key>
+          <Property Name="WasteId" Type="int" Nullable="false" />
+          <Property Name="RecipeId" Type="int" />
+        </EntityType>
+        <EntityType Name="Store">
+          <Key>
+            <PropertyRef Name="StoreId" />
+          </Key>
+          <Property Name="StoreId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedByUser" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="UnitMeasure">
+          <Key>
+            <PropertyRef Name="UnitMeasureId" />
+          </Key>
+          <Property Name="UnitMeasureId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="1000" />
+          <Property Name="IsBaseUnit" Type="bit" />
+          <Property Name="BaseUnitId" Type="int" />
+          <Property Name="BaseUnitFactor" Type="float" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedByUser" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Waste">
+          <Key>
+            <PropertyRef Name="WasteId" />
+          </Key>
+          <Property Name="WasteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UnitMeasureId" Type="int" />
+          <Property Name="Quantity" Type="float" />
+          <Property Name="WasteValue" Type="float" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="UnitPrice" Type="money" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedByUser" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="ProductVendor">
+          <Key>
+            <PropertyRef Name="ProductVendorId" />
+          </Key>
+          <Property Name="ProductVendorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="VendorId" Type="int" />
+          <Property Name="UnitMeasureId" Type="int" />
+          <Property Name="AverageLeadTime" Type="float" />
+          <Property Name="StandardPrice" Type="money" />
+          <Property Name="LastReceiptCost" Type="money" />
+          <Property Name="LastReceiptDate" Type="datetime" />
+          <Property Name="MinOrderQuantity" Type="float" />
+          <Property Name="MaxOrderQuantity" Type="float" />
+          <Property Name="OnOrderQuantity" Type="float" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedByUser" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="PurchaseOrderDetail">
+          <Key>
+            <PropertyRef Name="PurchaseOrderDetailId" />
+          </Key>
+          <Property Name="PurchaseOrderDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PurchaseOrderId" Type="int" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="UnitMeasureId" Type="int" />
+          <Property Name="OrderQuantity" Type="float" />
+          <Property Name="UnitPrice" Type="money" />
+          <Property Name="LineTotal" Type="float" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="ReceivedQuantity" Type="float" />
+          <Property Name="ReturnedQuantity" Type="float" />
+          <Property Name="StockedQuantity" Type="float" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedByUser" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="PurchaseOrderHeader">
+          <Key>
+            <PropertyRef Name="PurchaseOrderId" />
+          </Key>
+          <Property Name="PurchaseOrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusId" Type="int" />
+          <Property Name="EmployeeId" Type="int" />
+          <Property Name="VendorId" Type="int" />
+          <Property Name="ShipMethodId" Type="int" />
+          <Property Name="OrderDate" Type="datetime" />
+          <Property Name="ShipDate" Type="datetime" />
+          <Property Name="SubTotal" Type="money" />
+          <Property Name="VAT" Type="money" />
+          <Property Name="Freight" Type="money" />
+          <Property Name="TotalDue" Type="money" StoreGeneratedPattern="Computed" />
+          <Property Name="InvoiceNumber" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedByUser" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="4000" />
+        </EntityType>
+        <EntityType Name="PurchaseOrderStatus">
+          <Key>
+            <PropertyRef Name="PurchaseOrderStatusId" />
+          </Key>
+          <Property Name="PurchaseOrderStatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedByUser" Type="nvarchar" MaxLength="1000" />
+          <Property Name="IsVisible" Type="bit" />
+        </EntityType>
+        <EntityType Name="ShipMethod">
+          <Key>
+            <PropertyRef Name="ShipMethodId" />
+          </Key>
+          <Property Name="ShipMethodId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ShipBase" Type="money" />
+          <Property Name="ShipRate" Type="money" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedByUser" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="VendorId" />
+          </Key>
+          <Property Name="VendorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountNumber" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ReportAccountNumber" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Name" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Address" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Email" Type="nvarchar" MaxLength="1000" />
+          <Property Name="HomePage" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedByUser" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ContactName" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Address" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Country" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Email" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedByUser" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="PaymentType">
+          <Key>
+            <PropertyRef Name="PaymentTypeId" />
+          </Key>
+          <Property Name="PaymentTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedByUser" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="SalesOrderDetail">
+          <Key>
+            <PropertyRef Name="SalesOrderDetailId" />
+          </Key>
+          <Property Name="SalesOrderDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SalesOrderHeaderId" Type="int" />
+          <Property Name="RecipeId" Type="int" />
+          <Property Name="OrderQuantity" Type="float" />
+          <Property Name="UnitPrice" Type="money" />
+          <Property Name="UnitPriceDiscount" Type="float" />
+          <Property Name="LineTotal" Type="float" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedByUser" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="SalesOrderHeader">
+          <Key>
+            <PropertyRef Name="SalesOrderHeaderId" />
+          </Key>
+          <Property Name="SalesOrderHeaderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="EmployeeId" Type="int" />
+          <Property Name="StatusId" Type="int" />
+          <Property Name="PaymentTypeId" Type="int" />
+          <Property Name="AccountName" Type="nvarchar" MaxLength="1000" />
+          <Property Name="OrderDate" Type="datetime" />
+          <Property Name="RequiredDate" Type="datetime" />
+          <Property Name="ShippedDate" Type="datetime" />
+          <Property Name="ShipName" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ShipAddress" Type="nvarchar" MaxLength="1000" />
+          <Property Name="SubTotal" Type="money" />
+          <Property Name="TaxAmt" Type="money" />
+          <Property Name="Freight" Type="money" />
+          <Property Name="TotalDue" Type="money" StoreGeneratedPattern="Computed" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedByUser" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="SalesOrderStatus">
+          <Key>
+            <PropertyRef Name="SalesOrderStatusId" />
+          </Key>
+          <Property Name="SalesOrderStatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedByUser" Type="nvarchar" MaxLength="1000" />
+          <Property Name="IsVisible" Type="bit" />
+        </EntityType>
+        <Association Name="FK_EmployeeDepartment_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="EmployeeDepartment" Type="Self.EmployeeDepartment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DepartmentId" />
+            </Principal>
+            <Dependent Role="EmployeeDepartment">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeDepartment_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="EmployeeDepartment" Type="Self.EmployeeDepartment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="EmployeeDepartment">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeDepartment_Shift">
+          <End Role="Shift" Type="Self.Shift" Multiplicity="0..1" />
+          <End Role="EmployeeDepartment" Type="Self.EmployeeDepartment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shift">
+              <PropertyRef Name="ShiftId" />
+            </Principal>
+            <Dependent Role="EmployeeDepartment">
+              <PropertyRef Name="ShiftId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="SalesOrderHeader" Type="Self.SalesOrderHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="SalesOrderHeader">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="SalesOrderHeader" Type="Self.SalesOrderHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="SalesOrderHeader">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Order">
+          <End Role="SalesOrderHeader" Type="Self.SalesOrderHeader" Multiplicity="0..1" />
+          <End Role="SalesOrderDetail" Type="Self.SalesOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalesOrderHeader">
+              <PropertyRef Name="SalesOrderHeaderId" />
+            </Principal>
+            <Dependent Role="SalesOrderDetail">
+              <PropertyRef Name="SalesOrderHeaderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Recipe">
+          <End Role="Recipe" Type="Self.Recipe" Multiplicity="0..1" />
+          <End Role="SalesOrderDetail" Type="Self.SalesOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recipe">
+              <PropertyRef Name="RecipeId" />
+            </Principal>
+            <Dependent Role="SalesOrderDetail">
+              <PropertyRef Name="RecipeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Category">
+          <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductCategory">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Store">
+          <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="StoreId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="StoreId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Unit">
+          <End Role="UnitMeasure" Type="Self.UnitMeasure" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitMeasure">
+              <PropertyRef Name="UnitMeasureId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="UnitMeasureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductInventory_Inventory">
+          <End Role="ProductInventory" Type="Self.ProductInventory" Multiplicity="1" />
+          <End Role="ProductInventory1" Type="Self.ProductInventory" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ProductInventory">
+              <PropertyRef Name="InventoryId" />
+            </Principal>
+            <Dependent Role="ProductInventory1">
+              <PropertyRef Name="InventoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductInventory_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="ProductInventory" Type="Self.ProductInventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="ProductInventory">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductInventory_ProductInventoryHeader">
+          <End Role="ProductInventoryHeader" Type="Self.ProductInventoryHeader" Multiplicity="0..1" />
+          <End Role="ProductInventory" Type="Self.ProductInventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductInventoryHeader">
+              <PropertyRef Name="ProductInventoryHeaderId" />
+            </Principal>
+            <Dependent Role="ProductInventory">
+              <PropertyRef Name="ProductInventoryHeaderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductVendor_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="ProductVendor" Type="Self.ProductVendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="ProductVendor">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductVendor_UnitMeasure">
+          <End Role="UnitMeasure" Type="Self.UnitMeasure" Multiplicity="0..1" />
+          <End Role="ProductVendor" Type="Self.ProductVendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitMeasure">
+              <PropertyRef Name="UnitMeasureId" />
+            </Principal>
+            <Dependent Role="ProductVendor">
+              <PropertyRef Name="UnitMeasureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductVendor_Vendor">
+          <End Role="Vendor" Type="Self.Vendor" Multiplicity="0..1" />
+          <End Role="ProductVendor" Type="Self.ProductVendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="VendorId" />
+            </Principal>
+            <Dependent Role="ProductVendor">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductWaste_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="ProductWaste" Type="Self.ProductWaste" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="ProductWaste">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductWaste_ProductWasteHeader">
+          <End Role="ProductWasteHeader" Type="Self.ProductWasteHeader" Multiplicity="0..1" />
+          <End Role="ProductWaste" Type="Self.ProductWaste" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductWasteHeader">
+              <PropertyRef Name="ProductWasteHeaderId" />
+            </Principal>
+            <Dependent Role="ProductWaste">
+              <PropertyRef Name="ProductWasteHeaderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductWaste_UnitMeasure">
+          <End Role="UnitMeasure" Type="Self.UnitMeasure" Multiplicity="0..1" />
+          <End Role="Waste" Type="Self.Waste" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitMeasure">
+              <PropertyRef Name="UnitMeasureId" />
+            </Principal>
+            <Dependent Role="Waste">
+              <PropertyRef Name="UnitMeasureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductWaste_Waste">
+          <End Role="Waste" Type="Self.Waste" Multiplicity="1" />
+          <End Role="ProductWaste" Type="Self.ProductWaste" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Waste">
+              <PropertyRef Name="WasteId" />
+            </Principal>
+            <Dependent Role="ProductWaste">
+              <PropertyRef Name="WasteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrderDetail_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="PurchaseOrderDetail" Type="Self.PurchaseOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="PurchaseOrderDetail">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrderDetail_PurchaseOrderHeader">
+          <End Role="PurchaseOrderHeader" Type="Self.PurchaseOrderHeader" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PurchaseOrderDetail" Type="Self.PurchaseOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseOrderHeader">
+              <PropertyRef Name="PurchaseOrderId" />
+            </Principal>
+            <Dependent Role="PurchaseOrderDetail">
+              <PropertyRef Name="PurchaseOrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrderDetail_UnitMeasure">
+          <End Role="UnitMeasure" Type="Self.UnitMeasure" Multiplicity="0..1" />
+          <End Role="PurchaseOrderDetail" Type="Self.PurchaseOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitMeasure">
+              <PropertyRef Name="UnitMeasureId" />
+            </Principal>
+            <Dependent Role="PurchaseOrderDetail">
+              <PropertyRef Name="UnitMeasureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrderHeader_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="PurchaseOrderHeader" Type="Self.PurchaseOrderHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="PurchaseOrderHeader">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrderHeader_PurchaseOrderStatus">
+          <End Role="PurchaseOrderStatus" Type="Self.PurchaseOrderStatus" Multiplicity="0..1" />
+          <End Role="PurchaseOrderHeader" Type="Self.PurchaseOrderHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseOrderStatus">
+              <PropertyRef Name="PurchaseOrderStatusId" />
+            </Principal>
+            <Dependent Role="PurchaseOrderHeader">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrderHeader_ShipMethod">
+          <End Role="ShipMethod" Type="Self.ShipMethod" Multiplicity="0..1" />
+          <End Role="PurchaseOrderHeader" Type="Self.PurchaseOrderHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShipMethod">
+              <PropertyRef Name="ShipMethodId" />
+            </Principal>
+            <Dependent Role="PurchaseOrderHeader">
+              <PropertyRef Name="ShipMethodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrderHeader_Vendor">
+          <End Role="Vendor" Type="Self.Vendor" Multiplicity="0..1" />
+          <End Role="PurchaseOrderHeader" Type="Self.PurchaseOrderHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="VendorId" />
+            </Principal>
+            <Dependent Role="PurchaseOrderHeader">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recipe_ProductCategory">
+          <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="0..1" />
+          <End Role="Recipe" Type="Self.Recipe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductCategory">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Recipe">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RecipeIngredient_IngredientRecipe">
+          <End Role="Recipe" Type="Self.Recipe" Multiplicity="0..1" />
+          <End Role="RecipeIngredient" Type="Self.RecipeIngredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recipe">
+              <PropertyRef Name="RecipeId" />
+            </Principal>
+            <Dependent Role="RecipeIngredient">
+              <PropertyRef Name="IngredientRecipeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RecipeIngredient_ParentRecipe">
+          <End Role="Recipe" Type="Self.Recipe" Multiplicity="0..1" />
+          <End Role="RecipeIngredient" Type="Self.RecipeIngredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recipe">
+              <PropertyRef Name="RecipeId" />
+            </Principal>
+            <Dependent Role="RecipeIngredient">
+              <PropertyRef Name="ParentRecipeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RecipeIngredient_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="ProductIngredient" Type="Self.ProductIngredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="ProductIngredient">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RecipeIngredient_Recipe">
+          <End Role="Recipe" Type="Self.Recipe" Multiplicity="0..1" />
+          <End Role="ProductIngredient" Type="Self.ProductIngredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recipe">
+              <PropertyRef Name="RecipeId" />
+            </Principal>
+            <Dependent Role="ProductIngredient">
+              <PropertyRef Name="RecipeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RecipeInventory_Inventory">
+          <End Role="RecipeInventory" Type="Self.RecipeInventory" Multiplicity="1" />
+          <End Role="RecipeInventory1" Type="Self.RecipeInventory" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="RecipeInventory">
+              <PropertyRef Name="InventoryId" />
+            </Principal>
+            <Dependent Role="RecipeInventory1">
+              <PropertyRef Name="InventoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RecipeInventory_Recipe">
+          <End Role="Recipe" Type="Self.Recipe" Multiplicity="0..1" />
+          <End Role="RecipeInventory" Type="Self.RecipeInventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recipe">
+              <PropertyRef Name="RecipeId" />
+            </Principal>
+            <Dependent Role="RecipeInventory">
+              <PropertyRef Name="RecipeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RecipeWaste_Recipe">
+          <End Role="Recipe" Type="Self.Recipe" Multiplicity="0..1" />
+          <End Role="RecipeWaste" Type="Self.RecipeWaste" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recipe">
+              <PropertyRef Name="RecipeId" />
+            </Principal>
+            <Dependent Role="RecipeWaste">
+              <PropertyRef Name="RecipeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RecipeWaste_Waste">
+          <End Role="Waste" Type="Self.Waste" Multiplicity="1" />
+          <End Role="RecipeWaste" Type="Self.RecipeWaste" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Waste">
+              <PropertyRef Name="WasteId" />
+            </Principal>
+            <Dependent Role="RecipeWaste">
+              <PropertyRef Name="WasteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesOrderHeader_PaymentType">
+          <End Role="PaymentType" Type="Self.PaymentType" Multiplicity="0..1" />
+          <End Role="SalesOrderHeader" Type="Self.SalesOrderHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentType">
+              <PropertyRef Name="PaymentTypeId" />
+            </Principal>
+            <Dependent Role="SalesOrderHeader">
+              <PropertyRef Name="PaymentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesOrderHeader_SalesOrderStatus">
+          <End Role="SalesOrderStatus" Type="Self.SalesOrderStatus" Multiplicity="0..1" />
+          <End Role="SalesOrderHeader" Type="Self.SalesOrderHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalesOrderStatus">
+              <PropertyRef Name="SalesOrderStatusId" />
+            </Principal>
+            <Dependent Role="SalesOrderHeader">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RecipiesModelNSStoreContainer">
+          <EntitySet Name="EmailTemplate" EntityType="Self.EmailTemplate" Schema="Admin" store:Type="Tables" />
+          <EntitySet Name="__RecipiesDataBase" EntityType="Self.__RecipiesDataBase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="HumanResources" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="HumanResources" store:Type="Tables" />
+          <EntitySet Name="EmployeeDepartment" EntityType="Self.EmployeeDepartment" Schema="HumanResources" store:Type="Tables" />
+          <EntitySet Name="Shift" EntityType="Self.Shift" Schema="HumanResources" store:Type="Tables" />
+          <EntitySet Name="Inventory" EntityType="Self.Inventory" Schema="Production" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="Production" store:Type="Tables" />
+          <EntitySet Name="ProductCategory" EntityType="Self.ProductCategory" Schema="Production" store:Type="Tables" />
+          <EntitySet Name="ProductHistory" EntityType="Self.ProductHistory" Schema="Production" store:Type="Tables" />
+          <EntitySet Name="ProductIngredient" EntityType="Self.ProductIngredient" Schema="Production" store:Type="Tables" />
+          <EntitySet Name="ProductInventory" EntityType="Self.ProductInventory" Schema="Production" store:Type="Tables" />
+          <EntitySet Name="ProductInventoryHeader" EntityType="Self.ProductInventoryHeader" Schema="Production" store:Type="Tables" />
+          <EntitySet Name="ProductWaste" EntityType="Self.ProductWaste" Schema="Production" store:Type="Tables" />
+          <EntitySet Name="ProductWasteHeader" EntityType="Self.ProductWasteHeader" Schema="Production" store:Type="Tables" />
+          <EntitySet Name="Recipe" EntityType="Self.Recipe" Schema="Production" store:Type="Tables" />
+          <EntitySet Name="RecipeIngredient" EntityType="Self.RecipeIngredient" Schema="Production" store:Type="Tables" />
+          <EntitySet Name="RecipeInventory" EntityType="Self.RecipeInventory" Schema="Production" store:Type="Tables" />
+          <EntitySet Name="RecipeWaste" EntityType="Self.RecipeWaste" Schema="Production" store:Type="Tables" />
+          <EntitySet Name="Store" EntityType="Self.Store" Schema="Production" store:Type="Tables" />
+          <EntitySet Name="UnitMeasure" EntityType="Self.UnitMeasure" Schema="Production" store:Type="Tables" />
+          <EntitySet Name="Waste" EntityType="Self.Waste" Schema="Production" store:Type="Tables" />
+          <EntitySet Name="ProductVendor" EntityType="Self.ProductVendor" Schema="Purchasing" store:Type="Tables" />
+          <EntitySet Name="PurchaseOrderDetail" EntityType="Self.PurchaseOrderDetail" Schema="Purchasing" store:Type="Tables" />
+          <EntitySet Name="PurchaseOrderHeader" EntityType="Self.PurchaseOrderHeader" Schema="Purchasing" store:Type="Tables" />
+          <EntitySet Name="PurchaseOrderStatus" EntityType="Self.PurchaseOrderStatus" Schema="Purchasing" store:Type="Tables" />
+          <EntitySet Name="ShipMethod" EntityType="Self.ShipMethod" Schema="Purchasing" store:Type="Tables" />
+          <EntitySet Name="Vendor" EntityType="Self.Vendor" Schema="Purchasing" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="Sales" store:Type="Tables" />
+          <EntitySet Name="PaymentType" EntityType="Self.PaymentType" Schema="Sales" store:Type="Tables" />
+          <EntitySet Name="SalesOrderDetail" EntityType="Self.SalesOrderDetail" Schema="Sales" store:Type="Tables" />
+          <EntitySet Name="SalesOrderHeader" EntityType="Self.SalesOrderHeader" Schema="Sales" store:Type="Tables" />
+          <EntitySet Name="SalesOrderStatus" EntityType="Self.SalesOrderStatus" Schema="Sales" store:Type="Tables" />
+          <AssociationSet Name="FK_EmployeeDepartment_Department" Association="Self.FK_EmployeeDepartment_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="EmployeeDepartment" EntitySet="EmployeeDepartment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeDepartment_Employee" Association="Self.FK_EmployeeDepartment_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmployeeDepartment" EntitySet="EmployeeDepartment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeDepartment_Shift" Association="Self.FK_EmployeeDepartment_Shift">
+            <End Role="Shift" EntitySet="Shift" />
+            <End Role="EmployeeDepartment" EntitySet="EmployeeDepartment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Customer" Association="Self.FK_Order_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="SalesOrderHeader" EntitySet="SalesOrderHeader" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Employee" Association="Self.FK_Order_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="SalesOrderHeader" EntitySet="SalesOrderHeader" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Order" Association="Self.FK_OrderDetail_Order">
+            <End Role="SalesOrderHeader" EntitySet="SalesOrderHeader" />
+            <End Role="SalesOrderDetail" EntitySet="SalesOrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Recipe" Association="Self.FK_OrderDetail_Recipe">
+            <End Role="Recipe" EntitySet="Recipe" />
+            <End Role="SalesOrderDetail" EntitySet="SalesOrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
+            <End Role="ProductCategory" EntitySet="ProductCategory" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Store" Association="Self.FK_Product_Store">
+            <End Role="Store" EntitySet="Store" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Unit" Association="Self.FK_Product_Unit">
+            <End Role="UnitMeasure" EntitySet="UnitMeasure" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductInventory_Inventory" Association="Self.FK_ProductInventory_Inventory">
+            <End Role="ProductInventory" EntitySet="ProductInventory" />
+            <End Role="ProductInventory1" EntitySet="ProductInventory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductInventory_Product" Association="Self.FK_ProductInventory_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductInventory" EntitySet="ProductInventory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductInventory_ProductInventoryHeader" Association="Self.FK_ProductInventory_ProductInventoryHeader">
+            <End Role="ProductInventoryHeader" EntitySet="ProductInventoryHeader" />
+            <End Role="ProductInventory" EntitySet="ProductInventory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductVendor_Product" Association="Self.FK_ProductVendor_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductVendor" EntitySet="ProductVendor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductVendor_UnitMeasure" Association="Self.FK_ProductVendor_UnitMeasure">
+            <End Role="UnitMeasure" EntitySet="UnitMeasure" />
+            <End Role="ProductVendor" EntitySet="ProductVendor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductVendor_Vendor" Association="Self.FK_ProductVendor_Vendor">
+            <End Role="Vendor" EntitySet="Vendor" />
+            <End Role="ProductVendor" EntitySet="ProductVendor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductWaste_Product" Association="Self.FK_ProductWaste_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductWaste" EntitySet="ProductWaste" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductWaste_ProductWasteHeader" Association="Self.FK_ProductWaste_ProductWasteHeader">
+            <End Role="ProductWasteHeader" EntitySet="ProductWasteHeader" />
+            <End Role="ProductWaste" EntitySet="ProductWaste" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductWaste_UnitMeasure" Association="Self.FK_ProductWaste_UnitMeasure">
+            <End Role="UnitMeasure" EntitySet="UnitMeasure" />
+            <End Role="Waste" EntitySet="Waste" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductWaste_Waste" Association="Self.FK_ProductWaste_Waste">
+            <End Role="Waste" EntitySet="Waste" />
+            <End Role="ProductWaste" EntitySet="ProductWaste" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrderDetail_Product" Association="Self.FK_PurchaseOrderDetail_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrderDetail_PurchaseOrderHeader" Association="Self.FK_PurchaseOrderDetail_PurchaseOrderHeader">
+            <End Role="PurchaseOrderHeader" EntitySet="PurchaseOrderHeader" />
+            <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrderDetail_UnitMeasure" Association="Self.FK_PurchaseOrderDetail_UnitMeasure">
+            <End Role="UnitMeasure" EntitySet="UnitMeasure" />
+            <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrderHeader_Employee" Association="Self.FK_PurchaseOrderHeader_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="PurchaseOrderHeader" EntitySet="PurchaseOrderHeader" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrderHeader_PurchaseOrderStatus" Association="Self.FK_PurchaseOrderHeader_PurchaseOrderStatus">
+            <End Role="PurchaseOrderStatus" EntitySet="PurchaseOrderStatus" />
+            <End Role="PurchaseOrderHeader" EntitySet="PurchaseOrderHeader" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrderHeader_ShipMethod" Association="Self.FK_PurchaseOrderHeader_ShipMethod">
+            <End Role="ShipMethod" EntitySet="ShipMethod" />
+            <End Role="PurchaseOrderHeader" EntitySet="PurchaseOrderHeader" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrderHeader_Vendor" Association="Self.FK_PurchaseOrderHeader_Vendor">
+            <End Role="Vendor" EntitySet="Vendor" />
+            <End Role="PurchaseOrderHeader" EntitySet="PurchaseOrderHeader" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recipe_ProductCategory" Association="Self.FK_Recipe_ProductCategory">
+            <End Role="ProductCategory" EntitySet="ProductCategory" />
+            <End Role="Recipe" EntitySet="Recipe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecipeIngredient_IngredientRecipe" Association="Self.FK_RecipeIngredient_IngredientRecipe">
+            <End Role="Recipe" EntitySet="Recipe" />
+            <End Role="RecipeIngredient" EntitySet="RecipeIngredient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecipeIngredient_ParentRecipe" Association="Self.FK_RecipeIngredient_ParentRecipe">
+            <End Role="Recipe" EntitySet="Recipe" />
+            <End Role="RecipeIngredient" EntitySet="RecipeIngredient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecipeIngredient_Product" Association="Self.FK_RecipeIngredient_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductIngredient" EntitySet="ProductIngredient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecipeIngredient_Recipe" Association="Self.FK_RecipeIngredient_Recipe">
+            <End Role="Recipe" EntitySet="Recipe" />
+            <End Role="ProductIngredient" EntitySet="ProductIngredient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecipeInventory_Inventory" Association="Self.FK_RecipeInventory_Inventory">
+            <End Role="RecipeInventory" EntitySet="RecipeInventory" />
+            <End Role="RecipeInventory1" EntitySet="RecipeInventory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecipeInventory_Recipe" Association="Self.FK_RecipeInventory_Recipe">
+            <End Role="Recipe" EntitySet="Recipe" />
+            <End Role="RecipeInventory" EntitySet="RecipeInventory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecipeWaste_Recipe" Association="Self.FK_RecipeWaste_Recipe">
+            <End Role="Recipe" EntitySet="Recipe" />
+            <End Role="RecipeWaste" EntitySet="RecipeWaste" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecipeWaste_Waste" Association="Self.FK_RecipeWaste_Waste">
+            <End Role="Waste" EntitySet="Waste" />
+            <End Role="RecipeWaste" EntitySet="RecipeWaste" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesOrderHeader_PaymentType" Association="Self.FK_SalesOrderHeader_PaymentType">
+            <End Role="PaymentType" EntitySet="PaymentType" />
+            <End Role="SalesOrderHeader" EntitySet="SalesOrderHeader" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesOrderHeader_SalesOrderStatus" Association="Self.FK_SalesOrderHeader_SalesOrderStatus">
+            <End Role="SalesOrderStatus" EntitySet="SalesOrderStatus" />
+            <End Role="SalesOrderHeader" EntitySet="SalesOrderHeader" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RecipiesModelNS" Alias="Self" p1:UseStrongSpatialTypes="false"
+              xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation"
+              xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation"
+              xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="RecipiesEntities" p1:LazyLoadingEnabled="false">
+          <EntitySet Name="EmailTemplates" EntityType="RecipiesModelNS.EmailTemplate" />
+          <EntitySet Name="Departments" EntityType="RecipiesModelNS.Department" />
+          <EntitySet Name="Employees" EntityType="RecipiesModelNS.Employee" />
+          <EntitySet Name="EmployeeDepartments" EntityType="RecipiesModelNS.EmployeeDepartment" />
+          <EntitySet Name="Shifts" EntityType="RecipiesModelNS.Shift" />
+          <EntitySet Name="Inventories" EntityType="RecipiesModelNS.Inventory" />
+          <EntitySet Name="Products" EntityType="RecipiesModelNS.Product" />
+          <EntitySet Name="ProductCategories" EntityType="RecipiesModelNS.ProductCategory" />
+          <EntitySet Name="ProductHistories" EntityType="RecipiesModelNS.ProductHistory" />
+          <EntitySet Name="Recipes" EntityType="RecipiesModelNS.Recipe" />
+          <EntitySet Name="Stores" EntityType="RecipiesModelNS.Store" />
+          <EntitySet Name="UnitMeasures" EntityType="RecipiesModelNS.UnitMeasure" />
+          <EntitySet Name="ProductVendors" EntityType="RecipiesModelNS.ProductVendor" />
+          <EntitySet Name="PurchaseOrderDetails" EntityType="RecipiesModelNS.PurchaseOrderDetail" />
+          <EntitySet Name="PurchaseOrderHeaders" EntityType="RecipiesModelNS.PurchaseOrderHeader" />
+          <EntitySet Name="PurchaseOrderStatus" EntityType="RecipiesModelNS.PurchaseOrderStatu" />
+          <EntitySet Name="ShipMethods" EntityType="RecipiesModelNS.ShipMethod" />
+          <EntitySet Name="Vendors" EntityType="RecipiesModelNS.Vendor" />
+          <EntitySet Name="Customers" EntityType="RecipiesModelNS.Customer" />
+          <EntitySet Name="PaymentTypes" EntityType="RecipiesModelNS.PaymentType" />
+          <EntitySet Name="SalesOrderDetails" EntityType="RecipiesModelNS.SalesOrderDetail" />
+          <EntitySet Name="SalesOrderHeaders" EntityType="RecipiesModelNS.SalesOrderHeader" />
+          <EntitySet Name="SalesOrderStatus" EntityType="RecipiesModelNS.SalesOrderStatu" />
+          <AssociationSet Name="FK_EmployeeDepartment_Department"
+                          Association="RecipiesModelNS.FK_EmployeeDepartment_Department">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="EmployeeDepartment" EntitySet="EmployeeDepartments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeDepartment_Employee"
+                          Association="RecipiesModelNS.FK_EmployeeDepartment_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="EmployeeDepartment" EntitySet="EmployeeDepartments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Employee" Association="RecipiesModelNS.FK_Order_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="SalesOrderHeader" EntitySet="SalesOrderHeaders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrderHeader_Employee"
+                          Association="RecipiesModelNS.FK_PurchaseOrderHeader_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="PurchaseOrderHeader" EntitySet="PurchaseOrderHeaders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeDepartment_Shift" Association="RecipiesModelNS.FK_EmployeeDepartment_Shift">
+            <End Role="Shift" EntitySet="Shifts" />
+            <End Role="EmployeeDepartment" EntitySet="EmployeeDepartments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Category" Association="RecipiesModelNS.FK_Product_Category">
+            <End Role="ProductCategory" EntitySet="ProductCategories" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Store" Association="RecipiesModelNS.FK_Product_Store">
+            <End Role="Store" EntitySet="Stores" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Unit" Association="RecipiesModelNS.FK_Product_Unit">
+            <End Role="UnitMeasure" EntitySet="UnitMeasures" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductVendor_Product" Association="RecipiesModelNS.FK_ProductVendor_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ProductVendor" EntitySet="ProductVendors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrderDetail_Product"
+                          Association="RecipiesModelNS.FK_PurchaseOrderDetail_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recipe_ProductCategory" Association="RecipiesModelNS.FK_Recipe_ProductCategory">
+            <End Role="ProductCategory" EntitySet="ProductCategories" />
+            <End Role="Recipe" EntitySet="Recipes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Recipe" Association="RecipiesModelNS.FK_OrderDetail_Recipe">
+            <End Role="Recipe" EntitySet="Recipes" />
+            <End Role="SalesOrderDetail" EntitySet="SalesOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductVendor_UnitMeasure"
+                          Association="RecipiesModelNS.FK_ProductVendor_UnitMeasure">
+            <End Role="UnitMeasure" EntitySet="UnitMeasures" />
+            <End Role="ProductVendor" EntitySet="ProductVendors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrderDetail_UnitMeasure"
+                          Association="RecipiesModelNS.FK_PurchaseOrderDetail_UnitMeasure">
+            <End Role="UnitMeasure" EntitySet="UnitMeasures" />
+            <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductVendor_Vendor" Association="RecipiesModelNS.FK_ProductVendor_Vendor">
+            <End Role="Vendor" EntitySet="Vendors" />
+            <End Role="ProductVendor" EntitySet="ProductVendors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrderDetail_PurchaseOrderHeader"
+                          Association="RecipiesModelNS.FK_PurchaseOrderDetail_PurchaseOrderHeader">
+            <End Role="PurchaseOrderHeader" EntitySet="PurchaseOrderHeaders" />
+            <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrderHeader_PurchaseOrderStatus"
+                          Association="RecipiesModelNS.FK_PurchaseOrderHeader_PurchaseOrderStatus">
+            <End Role="PurchaseOrderStatu" EntitySet="PurchaseOrderStatus" />
+            <End Role="PurchaseOrderHeader" EntitySet="PurchaseOrderHeaders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrderHeader_ShipMethod"
+                          Association="RecipiesModelNS.FK_PurchaseOrderHeader_ShipMethod">
+            <End Role="ShipMethod" EntitySet="ShipMethods" />
+            <End Role="PurchaseOrderHeader" EntitySet="PurchaseOrderHeaders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrderHeader_Vendor"
+                          Association="RecipiesModelNS.FK_PurchaseOrderHeader_Vendor">
+            <End Role="Vendor" EntitySet="Vendors" />
+            <End Role="PurchaseOrderHeader" EntitySet="PurchaseOrderHeaders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Customer" Association="RecipiesModelNS.FK_Order_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="SalesOrderHeader" EntitySet="SalesOrderHeaders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesOrderHeader_PaymentType"
+                          Association="RecipiesModelNS.FK_SalesOrderHeader_PaymentType">
+            <End Role="PaymentType" EntitySet="PaymentTypes" />
+            <End Role="SalesOrderHeader" EntitySet="SalesOrderHeaders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Order" Association="RecipiesModelNS.FK_OrderDetail_Order">
+            <End Role="SalesOrderHeader" EntitySet="SalesOrderHeaders" />
+            <End Role="SalesOrderDetail" EntitySet="SalesOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesOrderHeader_SalesOrderStatus"
+                          Association="RecipiesModelNS.FK_SalesOrderHeader_SalesOrderStatus">
+            <End Role="SalesOrderStatu" EntitySet="SalesOrderStatus" />
+            <End Role="SalesOrderHeader" EntitySet="SalesOrderHeaders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductInventory_Product" Association="RecipiesModelNS.FK_ProductInventory_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ProductInventory" EntitySet="Inventories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductInventory_Inventory"
+                          Association="RecipiesModelNS.FK_ProductInventory_Inventory">
+            <End Role="ProductInventory" EntitySet="Inventories" />
+            <End Role="ProductInventory1" EntitySet="Inventories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecipeInventory_Recipe" Association="RecipiesModelNS.FK_RecipeInventory_Recipe">
+            <End Role="Recipe" EntitySet="Recipes" />
+            <End Role="RecipeInventory" EntitySet="Inventories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecipeInventory_Inventory"
+                          Association="RecipiesModelNS.FK_RecipeInventory_Inventory">
+            <End Role="RecipeInventory" EntitySet="Inventories" />
+            <End Role="RecipeInventory1" EntitySet="Inventories" />
+          </AssociationSet>
+          <EntitySet Name="Wastes" EntityType="RecipiesModelNS.Waste" />
+          <AssociationSet Name="FK_ProductWaste_Product" Association="RecipiesModelNS.FK_ProductWaste_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ProductWaste" EntitySet="Wastes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductWaste_Waste" Association="RecipiesModelNS.FK_ProductWaste_Waste">
+            <End Role="Waste" EntitySet="Wastes" />
+            <End Role="ProductWaste" EntitySet="Wastes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecipeWaste_Recipe" Association="RecipiesModelNS.FK_RecipeWaste_Recipe">
+            <End Role="Recipe" EntitySet="Recipes" />
+            <End Role="RecipeWaste" EntitySet="Wastes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecipeWaste_Waste" Association="RecipiesModelNS.FK_RecipeWaste_Waste">
+            <End Role="Waste" EntitySet="Wastes" />
+            <End Role="RecipeWaste" EntitySet="Wastes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductWaste_UnitMeasure" Association="RecipiesModelNS.FK_ProductWaste_UnitMeasure">
+            <End Role="UnitMeasure" EntitySet="UnitMeasures" />
+            <End Role="Waste" EntitySet="Wastes" />
+          </AssociationSet>
+          <EntitySet Name="ProductInventoryHeaders" EntityType="RecipiesModelNS.ProductInventoryHeader" />
+          <AssociationSet Name="FK_ProductInventory_ProductInventoryHeader"
+                          Association="RecipiesModelNS.FK_ProductInventory_ProductInventoryHeader">
+            <End Role="ProductInventoryHeader" EntitySet="ProductInventoryHeaders" />
+            <End Role="ProductInventory" EntitySet="Inventories" />
+          </AssociationSet>
+          <EntitySet Name="ProductIngredients" EntityType="RecipiesModelNS.ProductIngredient" />
+          <AssociationSet Name="FK_RecipeIngredient_Product1"
+                          Association="RecipiesModelNS.FK_RecipeIngredient_Product1">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ProductIngredient" EntitySet="ProductIngredients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecipeIngredient_Recipe1" Association="RecipiesModelNS.FK_RecipeIngredient_Recipe1">
+            <End Role="Recipe" EntitySet="Recipes" />
+            <End Role="ProductIngredient" EntitySet="ProductIngredients" />
+          </AssociationSet>
+          <EntitySet Name="RecipeIngredients" EntityType="RecipiesModelNS.RecipeIngredient" />
+          <AssociationSet Name="FK_RecipeIngredient_IngredientRecipe"
+                          Association="RecipiesModelNS.FK_RecipeIngredient_IngredientRecipe">
+            <End Role="Recipe" EntitySet="Recipes" />
+            <End Role="RecipeIngredient" EntitySet="RecipeIngredients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecipeIngredient_ParentRecipe"
+                          Association="RecipiesModelNS.FK_RecipeIngredient_ParentRecipe">
+            <End Role="Recipe" EntitySet="Recipes" />
+            <End Role="RecipeIngredient" EntitySet="RecipeIngredients" />
+          </AssociationSet>
+          <EntitySet Name="C__RecipiesDataBase" EntityType="RecipiesModelNS.C__RecipiesDataBase" />
+          <EntitySet Name="ProductWasteHeaders" EntityType="RecipiesModelNS.ProductWasteHeader" />
+          <AssociationSet Name="FK_ProductWaste_ProductWasteHeader" Association="RecipiesModelNS.FK_ProductWaste_ProductWasteHeader">
+            <End Role="ProductWasteHeader" EntitySet="ProductWasteHeaders" />
+            <End Role="ProductWaste" EntitySet="Wastes" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="EmailTemplate">
+          <Key>
+            <PropertyRef Name="EmailTemplateId" />
+          </Key>
+          <Property Type="Int32" Name="EmailTemplateId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="From" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Cc" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Bcc" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Subject" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TextBody" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="HtmlBody" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AttachmentName" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsDefault" Nullable="false" />
+          <Property Type="DateTime" Name="ModifiedDate" Precision="3" />
+          <Property Type="String" Name="ModifiedByUser" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="DepartmentId" />
+          </Key>
+          <Property Type="Int32" Name="DepartmentId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="ModifiedDate" Precision="3" />
+          <Property Type="String" Name="ModifiedByUser" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EmployeeDepartments"
+                              Relationship="RecipiesModelNS.FK_EmployeeDepartment_Department" FromRole="Department"
+                              ToRole="EmployeeDepartment" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Type="Int32" Name="EmployeeId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="LastName" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FirstName" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="BirthDate" Precision="3" />
+          <Property Type="DateTime" Name="HireDate" Precision="3" />
+          <Property Type="String" Name="Address" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="City" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Region" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PostalCode" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Country" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="HomePhone" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PreviousExperience" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="ModifiedDate" Precision="3" />
+          <Property Type="String" Name="ModifiedByUser" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EmployeeDepartments" Relationship="RecipiesModelNS.FK_EmployeeDepartment_Employee"
+                              FromRole="Employee" ToRole="EmployeeDepartment" />
+          <NavigationProperty Name="SalesOrderHeaders" Relationship="RecipiesModelNS.FK_Order_Employee"
+                              FromRole="Employee" ToRole="SalesOrderHeader" />
+          <NavigationProperty Name="PurchaseOrderHeaders"
+                              Relationship="RecipiesModelNS.FK_PurchaseOrderHeader_Employee" FromRole="Employee"
+                              ToRole="PurchaseOrderHeader" />
+          <Property Type="String" Name="Email" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MobilePhone" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="EmployeeDepartment">
+          <Key>
+            <PropertyRef Name="EmployeeDepartmentId" />
+          </Key>
+          <Property Type="Int32" Name="EmployeeDepartmentId" Nullable="false"
+                    annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="EmployeeId" />
+          <Property Type="Int32" Name="DepartmentId" />
+          <Property Type="Int32" Name="ShiftId" />
+          <Property Type="DateTime" Name="StartDate" Precision="3" />
+          <Property Type="DateTime" Name="EndDate" Precision="3" />
+          <Property Type="DateTime" Name="ModifiedDate" Precision="3" />
+          <Property Type="String" Name="ModifiedByUser" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Department" Relationship="RecipiesModelNS.FK_EmployeeDepartment_Department"
+                              FromRole="EmployeeDepartment" ToRole="Department" />
+          <NavigationProperty Name="Employee" Relationship="RecipiesModelNS.FK_EmployeeDepartment_Employee"
+                              FromRole="EmployeeDepartment" ToRole="Employee" />
+          <NavigationProperty Name="Shift" Relationship="RecipiesModelNS.FK_EmployeeDepartment_Shift"
+                              FromRole="EmployeeDepartment" ToRole="Shift" />
+        </EntityType>
+        <EntityType Name="Shift">
+          <Key>
+            <PropertyRef Name="ShiftId" />
+          </Key>
+          <Property Type="Int32" Name="ShiftId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="StartHour" Precision="3" />
+          <Property Type="DateTime" Name="EndHour" Precision="3" />
+          <Property Type="DateTime" Name="ModifiedDate" Precision="3" />
+          <Property Type="String" Name="ModifiedByUser" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EmployeeDepartments" Relationship="RecipiesModelNS.FK_EmployeeDepartment_Shift"
+                              FromRole="Shift" ToRole="EmployeeDepartment" />
+        </EntityType>
+        <EntityType Name="Inventory" Abstract="true">
+          <Key>
+            <PropertyRef Name="InventoryId" />
+          </Key>
+          <Property Type="Int32" Name="InventoryId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="ForDate" Precision="0" a:SetterAccess="Private"
+                    xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:GetterAccess="Private" />
+          <Property Type="Decimal" Name="AverageUnitPrice" Precision="19" Scale="4" />
+          <Property Type="Double" Name="QuantityByDocuments" />
+          <Property Type="Double" Name="ValueByDocuments" annotation:StoreGeneratedPattern="Computed" />
+          <Property Type="Double" Name="StocktakeQuantity" />
+          <Property Type="Double" Name="StocktakeValue" annotation:StoreGeneratedPattern="Computed" />
+          <Property Type="Double" Name="DeficiencyQuantity" annotation:StoreGeneratedPattern="Computed" />
+          <Property Type="Double" Name="DeficiencyValue" annotation:StoreGeneratedPattern="Computed" />
+          <Property Type="Double" Name="SurplusQuantity" annotation:StoreGeneratedPattern="Computed" />
+          <Property Type="Double" Name="SurplusValue" annotation:StoreGeneratedPattern="Computed" />
+          <Property Type="DateTime" Name="ModifiedDate" Precision="3" />
+          <Property Type="String" Name="ModifiedByUser" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Type="Int32" Name="ProductId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="UnitMeasureId" />
+          <Property Type="Int32" Name="CategoryId" />
+          <Property Type="Int32" Name="StoreId" />
+          <Property Type="String" Name="Name" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Code" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="UnitPrice" Precision="19" Scale="4" />
+          <Property Type="Double" Name="UnitsInStock" />
+          <Property Type="Double" Name="UnitsOnOrder" />
+          <Property Type="Double" Name="ReorderLevel" />
+          <Property Type="DateTime" Name="ModifiedDate" Precision="3" />
+          <Property Type="String" Name="ModifiedByUser" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="Double" Name="StockValue" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="ProductCategory" Relationship="RecipiesModelNS.FK_Product_Category"
+                              FromRole="Product" ToRole="ProductCategory" />
+          <NavigationProperty Name="Store" Relationship="RecipiesModelNS.FK_Product_Store" FromRole="Product"
+                              ToRole="Store" />
+          <NavigationProperty Name="UnitMeasure" Relationship="RecipiesModelNS.FK_Product_Unit" FromRole="Product"
+                              ToRole="UnitMeasure" />
+          <NavigationProperty Name="ProductVendors" Relationship="RecipiesModelNS.FK_ProductVendor_Product"
+                              FromRole="Product" ToRole="ProductVendor" />
+          <NavigationProperty Name="PurchaseOrderDetails" Relationship="RecipiesModelNS.FK_PurchaseOrderDetail_Product"
+                              FromRole="Product" ToRole="PurchaseOrderDetail" />
+          <NavigationProperty Name="ProductInventories" Relationship="RecipiesModelNS.FK_ProductInventory_Product"
+                              FromRole="Product" ToRole="ProductInventory" />
+          <NavigationProperty Name="ProductWastes" Relationship="RecipiesModelNS.FK_ProductWaste_Product"
+                              FromRole="Product" ToRole="ProductWaste" />
+          <NavigationProperty Name="ProductIngredients" Relationship="RecipiesModelNS.FK_RecipeIngredient_Product1"
+                              FromRole="Product" ToRole="ProductIngredient" />
+        </EntityType>
+        <EntityType Name="ProductCategory">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Type="Int32" Name="CategoryId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="ModifiedDate" Precision="3" />
+          <Property Type="String" Name="ModifiedByUser" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Products" Relationship="RecipiesModelNS.FK_Product_Category"
+                              FromRole="ProductCategory" ToRole="Product" />
+          <NavigationProperty Name="Recipes" Relationship="RecipiesModelNS.FK_Recipe_ProductCategory"
+                              FromRole="ProductCategory" ToRole="Recipe" />
+        </EntityType>
+        <EntityType Name="ProductHistory">
+          <Key>
+            <PropertyRef Name="ProductHistoryId" />
+          </Key>
+          <Property Type="Int32" Name="ProductHistoryId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ProductId" />
+          <Property Type="Int32" Name="UnitMeasureId" />
+          <Property Type="Int32" Name="CategoryId" />
+          <Property Type="String" Name="Name" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Code" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="UnitPrice" Precision="19" Scale="4" />
+          <Property Type="Double" Name="UnitsInStock" />
+          <Property Type="Double" Name="UnitsOnOrder" />
+          <Property Type="String" Name="Store" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="Double" Name="ReorderLevel" />
+          <Property Type="DateTime" Name="ModifiedDate" Precision="3" />
+          <Property Type="String" Name="ModifiedByUser" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Recipe">
+          <Key>
+            <PropertyRef Name="RecipeId" />
+          </Key>
+          <Property Type="Int32" Name="RecipeId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CategoryId" />
+          <Property Type="String" Name="Name" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="ProductionValuePerPortion" Precision="19" Scale="4" />
+          <Property Type="DateTime" Name="ModifiedDate" Precision="3" />
+          <Property Type="String" Name="ModifiedByUser" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="SellValuePerPortion" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="GrossProfit" Precision="38" Scale="14"
+                    annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="ProductCategory" Relationship="RecipiesModelNS.FK_Recipe_ProductCategory"
+                              FromRole="Recipe" ToRole="ProductCategory" />
+          <NavigationProperty Name="SalesOrderDetails" Relationship="RecipiesModelNS.FK_OrderDetail_Recipe"
+                              FromRole="Recipe" ToRole="SalesOrderDetail" />
+          <NavigationProperty Name="RecipeInventories" Relationship="RecipiesModelNS.FK_RecipeInventory_Recipe"
+                              FromRole="Recipe" ToRole="RecipeInventory" />
+          <NavigationProperty Name="RecipeWastes" Relationship="RecipiesModelNS.FK_RecipeWaste_Recipe"
+                              FromRole="Recipe" ToRole="RecipeWaste" />
+          <NavigationProperty Name="ProductIngredients" Relationship="RecipiesModelNS.FK_RecipeIngredient_Recipe1"
+                              FromRole="Recipe" ToRole="ProductIngredient" />
+          <NavigationProperty Name="RecipeIngredients"
+                              Relationship="RecipiesModelNS.FK_RecipeIngredient_IngredientRecipe" FromRole="Recipe"
+                              ToRole="RecipeIngredient" />
+          <NavigationProperty Name="RecipeIngredients1" Relationship="RecipiesModelNS.FK_RecipeIngredient_ParentRecipe"
+                              FromRole="Recipe" ToRole="RecipeIngredient" />
+        </EntityType>
+        <EntityType Name="Store">
+          <Key>
+            <PropertyRef Name="StoreId" />
+          </Key>
+          <Property Type="Int32" Name="StoreId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="ModifiedDate" Precision="3" />
+          <Property Type="String" Name="ModifiedByUser" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Products" Relationship="RecipiesModelNS.FK_Product_Store" FromRole="Store"
+                              ToRole="Product" />
+        </EntityType>
+        <EntityType Name="UnitMeasure">
+          <Key>
+            <PropertyRef Name="UnitMeasureId" />
+          </Key>
+          <Property Type="Int32" Name="UnitMeasureId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsBaseUnit" />
+          <Property Type="Int32" Name="BaseUnitId" />
+          <Property Type="Double" Name="BaseUnitFactor" />
+          <Property Type="DateTime" Name="ModifiedDate" Precision="3" />
+          <Property Type="String" Name="ModifiedByUser" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Products" Relationship="RecipiesModelNS.FK_Product_Unit" FromRole="UnitMeasure"
+                              ToRole="Product" />
+          <NavigationProperty Name="ProductVendors" Relationship="RecipiesModelNS.FK_ProductVendor_UnitMeasure"
+                              FromRole="UnitMeasure" ToRole="ProductVendor" />
+          <NavigationProperty Name="PurchaseOrderDetails"
+                              Relationship="RecipiesModelNS.FK_PurchaseOrderDetail_UnitMeasure" FromRole="UnitMeasure"
+                              ToRole="PurchaseOrderDetail" />
+          <NavigationProperty Name="Wastes" Relationship="RecipiesModelNS.FK_ProductWaste_UnitMeasure"
+                              FromRole="UnitMeasure" ToRole="Waste" />
+        </EntityType>
+        <EntityType Name="ProductVendor">
+          <Key>
+            <PropertyRef Name="ProductVendorId" />
+          </Key>
+          <Property Type="Int32" Name="ProductVendorId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ProductId" />
+          <Property Type="Int32" Name="VendorId" />
+          <Property Type="Int32" Name="UnitMeasureId" />
+          <Property Type="Double" Name="AverageLeadTime" />
+          <Property Type="Decimal" Name="StandardPrice" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="LastReceiptCost" Precision="19" Scale="4" />
+          <Property Type="DateTime" Name="LastReceiptDate" Precision="3" />
+          <Property Type="Double" Name="MinOrderQuantity" />
+          <Property Type="Double" Name="MaxOrderQuantity" />
+          <Property Type="Double" Name="OnOrderQuantity" />
+          <Property Type="DateTime" Name="ModifiedDate" Precision="3" />
+          <Property Type="String" Name="ModifiedByUser" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Product" Relationship="RecipiesModelNS.FK_ProductVendor_Product"
+                              FromRole="ProductVendor" ToRole="Product" />
+          <NavigationProperty Name="UnitMeasure" Relationship="RecipiesModelNS.FK_ProductVendor_UnitMeasure"
+                              FromRole="ProductVendor" ToRole="UnitMeasure" />
+          <NavigationProperty Name="Vendor" Relationship="RecipiesModelNS.FK_ProductVendor_Vendor"
+                              FromRole="ProductVendor" ToRole="Vendor" />
+        </EntityType>
+        <EntityType Name="PurchaseOrderDetail">
+          <Key>
+            <PropertyRef Name="PurchaseOrderDetailId" />
+          </Key>
+          <Property Type="Int32" Name="PurchaseOrderDetailId" Nullable="false"
+                    annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="PurchaseOrderId" />
+          <Property Type="Int32" Name="ProductId" />
+          <Property Type="Int32" Name="UnitMeasureId" />
+          <Property Type="Double" Name="OrderQuantity" />
+          <Property Type="Decimal" Name="UnitPrice" Precision="19" Scale="4" />
+          <Property Type="Double" Name="LineTotal" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Type="Double" Name="ReceivedQuantity" />
+          <Property Type="Double" Name="ReturnedQuantity" />
+          <Property Type="Double" Name="StockedQuantity" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Type="DateTime" Name="ModifiedDate" Precision="3" />
+          <Property Type="String" Name="ModifiedByUser" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Product" Relationship="RecipiesModelNS.FK_PurchaseOrderDetail_Product"
+                              FromRole="PurchaseOrderDetail" ToRole="Product" />
+          <NavigationProperty Name="UnitMeasure" Relationship="RecipiesModelNS.FK_PurchaseOrderDetail_UnitMeasure"
+                              FromRole="PurchaseOrderDetail" ToRole="UnitMeasure" />
+          <NavigationProperty Name="PurchaseOrderHeader"
+                              Relationship="RecipiesModelNS.FK_PurchaseOrderDetail_PurchaseOrderHeader"
+                              FromRole="PurchaseOrderDetail" ToRole="PurchaseOrderHeader" />
+        </EntityType>
+        <EntityType Name="PurchaseOrderHeader">
+          <Key>
+            <PropertyRef Name="PurchaseOrderId" />
+          </Key>
+          <Property Type="Int32" Name="PurchaseOrderId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="StatusId" />
+          <Property Type="Int32" Name="EmployeeId" />
+          <Property Type="Int32" Name="VendorId" />
+          <Property Type="Int32" Name="ShipMethodId" />
+          <Property Type="DateTime" Name="OrderDate" Precision="3" />
+          <Property Type="DateTime" Name="ShipDate" Precision="3" />
+          <Property Type="Decimal" Name="SubTotal" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="VAT" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="Freight" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="TotalDue" Precision="19" Scale="4" annotation:StoreGeneratedPattern="Computed" />
+          <Property Type="String" Name="InvoiceNumber" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="ModifiedDate" Precision="3" />
+          <Property Type="String" Name="ModifiedByUser" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Notes" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employee" Relationship="RecipiesModelNS.FK_PurchaseOrderHeader_Employee"
+                              FromRole="PurchaseOrderHeader" ToRole="Employee" />
+          <NavigationProperty Name="PurchaseOrderDetails"
+                              Relationship="RecipiesModelNS.FK_PurchaseOrderDetail_PurchaseOrderHeader"
+                              FromRole="PurchaseOrderHeader" ToRole="PurchaseOrderDetail" />
+          <NavigationProperty Name="PurchaseOrderStatu"
+                              Relationship="RecipiesModelNS.FK_PurchaseOrderHeader_PurchaseOrderStatus"
+                              FromRole="PurchaseOrderHeader" ToRole="PurchaseOrderStatu" />
+          <NavigationProperty Name="ShipMethod" Relationship="RecipiesModelNS.FK_PurchaseOrderHeader_ShipMethod"
+                              FromRole="PurchaseOrderHeader" ToRole="ShipMethod" />
+          <NavigationProperty Name="Vendor" Relationship="RecipiesModelNS.FK_PurchaseOrderHeader_Vendor"
+                              FromRole="PurchaseOrderHeader" ToRole="Vendor" />
+        </EntityType>
+        <EntityType Name="PurchaseOrderStatu">
+          <Key>
+            <PropertyRef Name="PurchaseOrderStatusId" />
+          </Key>
+          <Property Type="Int32" Name="PurchaseOrderStatusId" Nullable="false"
+                    annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="ModifiedDate" Precision="3" />
+          <Property Type="String" Name="ModifiedByUser" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsVisible" />
+          <NavigationProperty Name="PurchaseOrderHeaders"
+                              Relationship="RecipiesModelNS.FK_PurchaseOrderHeader_PurchaseOrderStatus"
+                              FromRole="PurchaseOrderStatu" ToRole="PurchaseOrderHeader" />
+        </EntityType>
+        <EntityType Name="ShipMethod">
+          <Key>
+            <PropertyRef Name="ShipMethodId" />
+          </Key>
+          <Property Type="Int32" Name="ShipMethodId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="ShipBase" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="ShipRate" Precision="19" Scale="4" />
+          <Property Type="DateTime" Name="ModifiedDate" Precision="3" />
+          <Property Type="String" Name="ModifiedByUser" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PurchaseOrderHeaders"
+                              Relationship="RecipiesModelNS.FK_PurchaseOrderHeader_ShipMethod" FromRole="ShipMethod"
+                              ToRole="PurchaseOrderHeader" />
+        </EntityType>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="VendorId" />
+          </Key>
+          <Property Type="Int32" Name="VendorId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="AccountNumber" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ReportAccountNumber" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Name" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Address" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Phone" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Fax" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="HomePage" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="ModifiedDate" Precision="3" />
+          <Property Type="String" Name="ModifiedByUser" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ProductVendors" Relationship="RecipiesModelNS.FK_ProductVendor_Vendor"
+                              FromRole="Vendor" ToRole="ProductVendor" />
+          <NavigationProperty Name="PurchaseOrderHeaders" Relationship="RecipiesModelNS.FK_PurchaseOrderHeader_Vendor"
+                              FromRole="Vendor" ToRole="PurchaseOrderHeader" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Type="Int32" Name="CustomerID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="CompanyName" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ContactName" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Address" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Country" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Phone" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="ModifiedDate" Precision="3" />
+          <Property Type="String" Name="ModifiedByUser" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SalesOrderHeaders" Relationship="RecipiesModelNS.FK_Order_Customer"
+                              FromRole="Customer" ToRole="SalesOrderHeader" />
+        </EntityType>
+        <EntityType Name="PaymentType">
+          <Key>
+            <PropertyRef Name="PaymentTypeId" />
+          </Key>
+          <Property Type="Int32" Name="PaymentTypeId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="ModifiedDate" Precision="3" />
+          <Property Type="String" Name="ModifiedByUser" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SalesOrderHeaders" Relationship="RecipiesModelNS.FK_SalesOrderHeader_PaymentType"
+                              FromRole="PaymentType" ToRole="SalesOrderHeader" />
+        </EntityType>
+        <EntityType Name="SalesOrderDetail">
+          <Key>
+            <PropertyRef Name="SalesOrderDetailId" />
+          </Key>
+          <Property Type="Int32" Name="SalesOrderDetailId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="SalesOrderHeaderId" />
+          <Property Type="Int32" Name="RecipeId" />
+          <Property Type="Double" Name="OrderQuantity" />
+          <Property Type="Decimal" Name="UnitPrice" Precision="19" Scale="4" />
+          <Property Type="Double" Name="UnitPriceDiscount" />
+          <Property Type="Double" Name="LineTotal" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Type="DateTime" Name="ModifiedDate" Precision="3" />
+          <Property Type="String" Name="ModifiedByUser" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Recipe" Relationship="RecipiesModelNS.FK_OrderDetail_Recipe"
+                              FromRole="SalesOrderDetail" ToRole="Recipe" />
+          <NavigationProperty Name="SalesOrderHeader" Relationship="RecipiesModelNS.FK_OrderDetail_Order"
+                              FromRole="SalesOrderDetail" ToRole="SalesOrderHeader" />
+        </EntityType>
+        <EntityType Name="SalesOrderHeader">
+          <Key>
+            <PropertyRef Name="SalesOrderHeaderId" />
+          </Key>
+          <Property Type="Int32" Name="SalesOrderHeaderId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CustomerId" />
+          <Property Type="Int32" Name="EmployeeId" />
+          <Property Type="Int32" Name="StatusId" />
+          <Property Type="Int32" Name="PaymentTypeId" />
+          <Property Type="String" Name="AccountName" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="OrderDate" Precision="3" />
+          <Property Type="DateTime" Name="RequiredDate" Precision="3" />
+          <Property Type="DateTime" Name="ShippedDate" Precision="3" />
+          <Property Type="String" Name="ShipName" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ShipAddress" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="ModifiedDate" Precision="3" />
+          <Property Type="String" Name="ModifiedByUser" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employee" Relationship="RecipiesModelNS.FK_Order_Employee"
+                              FromRole="SalesOrderHeader" ToRole="Employee" />
+          <NavigationProperty Name="Customer" Relationship="RecipiesModelNS.FK_Order_Customer"
+                              FromRole="SalesOrderHeader" ToRole="Customer" />
+          <NavigationProperty Name="PaymentType" Relationship="RecipiesModelNS.FK_SalesOrderHeader_PaymentType"
+                              FromRole="SalesOrderHeader" ToRole="PaymentType" />
+          <NavigationProperty Name="SalesOrderDetails" Relationship="RecipiesModelNS.FK_OrderDetail_Order"
+                              FromRole="SalesOrderHeader" ToRole="SalesOrderDetail" />
+          <NavigationProperty Name="SalesOrderStatu"
+                              Relationship="RecipiesModelNS.FK_SalesOrderHeader_SalesOrderStatus"
+                              FromRole="SalesOrderHeader" ToRole="SalesOrderStatu" />
+          <Property Name="SubTotal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TaxAmt" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Freight" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalDue" Type="Decimal" Precision="19" Scale="4" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="SalesOrderStatu">
+          <Key>
+            <PropertyRef Name="SalesOrderStatusId" />
+          </Key>
+          <Property Type="Int32" Name="SalesOrderStatusId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="ModifiedDate" Precision="3" />
+          <Property Type="String" Name="ModifiedByUser" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsVisible" />
+          <NavigationProperty Name="SalesOrderHeaders"
+                              Relationship="RecipiesModelNS.FK_SalesOrderHeader_SalesOrderStatus"
+                              FromRole="SalesOrderStatu" ToRole="SalesOrderHeader" />
+        </EntityType>
+        <Association Name="FK_EmployeeDepartment_Department">
+          <End Type="RecipiesModelNS.Department" Role="Department" Multiplicity="0..1" />
+          <End Type="RecipiesModelNS.EmployeeDepartment" Role="EmployeeDepartment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DepartmentId" />
+            </Principal>
+            <Dependent Role="EmployeeDepartment">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeDepartment_Employee">
+          <End Type="RecipiesModelNS.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="RecipiesModelNS.EmployeeDepartment" Role="EmployeeDepartment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="EmployeeDepartment">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Employee">
+          <End Type="RecipiesModelNS.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="RecipiesModelNS.SalesOrderHeader" Role="SalesOrderHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="SalesOrderHeader">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrderHeader_Employee">
+          <End Type="RecipiesModelNS.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="RecipiesModelNS.PurchaseOrderHeader" Role="PurchaseOrderHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="PurchaseOrderHeader">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeDepartment_Shift">
+          <End Type="RecipiesModelNS.Shift" Role="Shift" Multiplicity="0..1" />
+          <End Type="RecipiesModelNS.EmployeeDepartment" Role="EmployeeDepartment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shift">
+              <PropertyRef Name="ShiftId" />
+            </Principal>
+            <Dependent Role="EmployeeDepartment">
+              <PropertyRef Name="ShiftId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Category">
+          <End Type="RecipiesModelNS.ProductCategory" Role="ProductCategory" Multiplicity="0..1" />
+          <End Type="RecipiesModelNS.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductCategory">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Store">
+          <End Type="RecipiesModelNS.Store" Role="Store" Multiplicity="0..1" />
+          <End Type="RecipiesModelNS.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="StoreId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="StoreId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Unit">
+          <End Type="RecipiesModelNS.UnitMeasure" Role="UnitMeasure" Multiplicity="0..1" />
+          <End Type="RecipiesModelNS.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitMeasure">
+              <PropertyRef Name="UnitMeasureId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="UnitMeasureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductVendor_Product">
+          <End Type="RecipiesModelNS.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="RecipiesModelNS.ProductVendor" Role="ProductVendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="ProductVendor">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrderDetail_Product">
+          <End Type="RecipiesModelNS.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="RecipiesModelNS.PurchaseOrderDetail" Role="PurchaseOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="PurchaseOrderDetail">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recipe_ProductCategory">
+          <End Type="RecipiesModelNS.ProductCategory" Role="ProductCategory" Multiplicity="0..1" />
+          <End Type="RecipiesModelNS.Recipe" Role="Recipe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductCategory">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Recipe">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Recipe">
+          <End Type="RecipiesModelNS.Recipe" Role="Recipe" Multiplicity="0..1" />
+          <End Type="RecipiesModelNS.SalesOrderDetail" Role="SalesOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recipe">
+              <PropertyRef Name="RecipeId" />
+            </Principal>
+            <Dependent Role="SalesOrderDetail">
+              <PropertyRef Name="RecipeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductVendor_UnitMeasure">
+          <End Type="RecipiesModelNS.UnitMeasure" Role="UnitMeasure" Multiplicity="0..1" />
+          <End Type="RecipiesModelNS.ProductVendor" Role="ProductVendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitMeasure">
+              <PropertyRef Name="UnitMeasureId" />
+            </Principal>
+            <Dependent Role="ProductVendor">
+              <PropertyRef Name="UnitMeasureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrderDetail_UnitMeasure">
+          <End Type="RecipiesModelNS.UnitMeasure" Role="UnitMeasure" Multiplicity="0..1" />
+          <End Type="RecipiesModelNS.PurchaseOrderDetail" Role="PurchaseOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitMeasure">
+              <PropertyRef Name="UnitMeasureId" />
+            </Principal>
+            <Dependent Role="PurchaseOrderDetail">
+              <PropertyRef Name="UnitMeasureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductVendor_Vendor">
+          <End Type="RecipiesModelNS.Vendor" Role="Vendor" Multiplicity="0..1" />
+          <End Type="RecipiesModelNS.ProductVendor" Role="ProductVendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="VendorId" />
+            </Principal>
+            <Dependent Role="ProductVendor">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrderDetail_PurchaseOrderHeader">
+          <End Type="RecipiesModelNS.PurchaseOrderHeader" Role="PurchaseOrderHeader" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="RecipiesModelNS.PurchaseOrderDetail" Role="PurchaseOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseOrderHeader">
+              <PropertyRef Name="PurchaseOrderId" />
+            </Principal>
+            <Dependent Role="PurchaseOrderDetail">
+              <PropertyRef Name="PurchaseOrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrderHeader_PurchaseOrderStatus">
+          <End Type="RecipiesModelNS.PurchaseOrderStatu" Role="PurchaseOrderStatu" Multiplicity="0..1" />
+          <End Type="RecipiesModelNS.PurchaseOrderHeader" Role="PurchaseOrderHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseOrderStatu">
+              <PropertyRef Name="PurchaseOrderStatusId" />
+            </Principal>
+            <Dependent Role="PurchaseOrderHeader">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrderHeader_ShipMethod">
+          <End Type="RecipiesModelNS.ShipMethod" Role="ShipMethod" Multiplicity="0..1" />
+          <End Type="RecipiesModelNS.PurchaseOrderHeader" Role="PurchaseOrderHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShipMethod">
+              <PropertyRef Name="ShipMethodId" />
+            </Principal>
+            <Dependent Role="PurchaseOrderHeader">
+              <PropertyRef Name="ShipMethodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrderHeader_Vendor">
+          <End Type="RecipiesModelNS.Vendor" Role="Vendor" Multiplicity="0..1" />
+          <End Type="RecipiesModelNS.PurchaseOrderHeader" Role="PurchaseOrderHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="VendorId" />
+            </Principal>
+            <Dependent Role="PurchaseOrderHeader">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Customer">
+          <End Type="RecipiesModelNS.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="RecipiesModelNS.SalesOrderHeader" Role="SalesOrderHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="SalesOrderHeader">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesOrderHeader_PaymentType">
+          <End Type="RecipiesModelNS.PaymentType" Role="PaymentType" Multiplicity="0..1" />
+          <End Type="RecipiesModelNS.SalesOrderHeader" Role="SalesOrderHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentType">
+              <PropertyRef Name="PaymentTypeId" />
+            </Principal>
+            <Dependent Role="SalesOrderHeader">
+              <PropertyRef Name="PaymentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Order">
+          <End Type="RecipiesModelNS.SalesOrderHeader" Role="SalesOrderHeader" Multiplicity="0..1">
+          </End>
+          <End Type="RecipiesModelNS.SalesOrderDetail" Role="SalesOrderDetail" Multiplicity="*">
+          </End>
+          <ReferentialConstraint>
+            <Principal Role="SalesOrderHeader">
+              <PropertyRef Name="SalesOrderHeaderId" />
+            </Principal>
+            <Dependent Role="SalesOrderDetail">
+              <PropertyRef Name="SalesOrderHeaderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesOrderHeader_SalesOrderStatus">
+          <End Type="RecipiesModelNS.SalesOrderStatu" Role="SalesOrderStatu" Multiplicity="0..1" />
+          <End Type="RecipiesModelNS.SalesOrderHeader" Role="SalesOrderHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalesOrderStatu">
+              <PropertyRef Name="SalesOrderStatusId" />
+            </Principal>
+            <Dependent Role="SalesOrderHeader">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ProductInventory" BaseType="RecipiesModelNS.Inventory">
+          <Property Type="Int32" Name="ProductId" />
+          <NavigationProperty Name="Product" Relationship="RecipiesModelNS.FK_ProductInventory_Product"
+                              FromRole="ProductInventory" ToRole="Product" />
+          <Property Name="ProductInventoryHeaderId" Type="Int32" />
+          <NavigationProperty Name="ProductInventoryHeader"
+                              Relationship="RecipiesModelNS.FK_ProductInventory_ProductInventoryHeader"
+                              FromRole="ProductInventory" ToRole="ProductInventoryHeader" />
+        </EntityType>
+        <EntityType Name="RecipeInventory" BaseType="RecipiesModelNS.Inventory">
+          <Property Type="Int32" Name="RecipeId" />
+          <NavigationProperty Name="Recipe" Relationship="RecipiesModelNS.FK_RecipeInventory_Recipe"
+                              FromRole="RecipeInventory" ToRole="Recipe" />
+        </EntityType>
+        <Association Name="FK_ProductInventory_Product">
+          <End Type="RecipiesModelNS.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="RecipiesModelNS.ProductInventory" Role="ProductInventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="ProductInventory">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductInventory_Inventory">
+          <End Type="RecipiesModelNS.ProductInventory" Role="ProductInventory" Multiplicity="1" />
+          <End Type="RecipiesModelNS.ProductInventory" Role="ProductInventory1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ProductInventory">
+              <PropertyRef Name="InventoryId" />
+            </Principal>
+            <Dependent Role="ProductInventory1">
+              <PropertyRef Name="InventoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RecipeInventory_Recipe">
+          <End Type="RecipiesModelNS.Recipe" Role="Recipe" Multiplicity="0..1" />
+          <End Type="RecipiesModelNS.RecipeInventory" Role="RecipeInventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recipe">
+              <PropertyRef Name="RecipeId" />
+            </Principal>
+            <Dependent Role="RecipeInventory">
+              <PropertyRef Name="RecipeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RecipeInventory_Inventory">
+          <End Type="RecipiesModelNS.RecipeInventory" Role="RecipeInventory" Multiplicity="1" />
+          <End Type="RecipiesModelNS.RecipeInventory" Role="RecipeInventory1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="RecipeInventory">
+              <PropertyRef Name="InventoryId" />
+            </Principal>
+            <Dependent Role="RecipeInventory1">
+              <PropertyRef Name="InventoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ProductWaste" BaseType="RecipiesModelNS.Waste">
+          <Property Type="Int32" Name="ProductId" />
+          <NavigationProperty Name="Product" Relationship="RecipiesModelNS.FK_ProductWaste_Product"
+                              FromRole="ProductWaste" ToRole="Product" />
+          <Property Name="ProductWasteHeaderId" Type="Int32" />
+          <NavigationProperty Name="ProductWasteHeader" Relationship="RecipiesModelNS.FK_ProductWaste_ProductWasteHeader" FromRole="ProductWaste" ToRole="ProductWasteHeader" />
+        </EntityType>
+        <EntityType Name="RecipeWaste" BaseType="RecipiesModelNS.Waste">
+          <Property Type="Int32" Name="RecipeId" />
+          <NavigationProperty Name="Recipe" Relationship="RecipiesModelNS.FK_RecipeWaste_Recipe" FromRole="RecipeWaste"
+                              ToRole="Recipe" />
+        </EntityType>
+        <EntityType Name="Waste" Abstract="true">
+          <Key>
+            <PropertyRef Name="WasteId" />
+          </Key>
+          <Property Type="Int32" Name="WasteId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="UnitMeasureId" />
+          <Property Type="Double" Name="Quantity" />
+          <Property Type="Double" Name="WasteValue" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Type="Decimal" Name="UnitPrice" Precision="19" Scale="4" />
+          <Property Type="DateTime" Name="ModifiedDate" Precision="3" />
+          <Property Type="String" Name="ModifiedByUser" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ProductWaste" Relationship="RecipiesModelNS.FK_ProductWaste_Waste" FromRole="Waste"
+                              ToRole="ProductWaste" />
+          <NavigationProperty Name="RecipeWaste" Relationship="RecipiesModelNS.FK_RecipeWaste_Waste" FromRole="Waste"
+                              ToRole="RecipeWaste" />
+          <NavigationProperty Name="UnitMeasure" Relationship="RecipiesModelNS.FK_ProductWaste_UnitMeasure"
+                              FromRole="Waste" ToRole="UnitMeasure" />
+        </EntityType>
+        <Association Name="FK_ProductWaste_Product">
+          <End Type="RecipiesModelNS.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="RecipiesModelNS.ProductWaste" Role="ProductWaste" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="ProductWaste">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductWaste_Waste">
+          <End Type="RecipiesModelNS.Waste" Role="Waste" Multiplicity="1" />
+          <End Type="RecipiesModelNS.ProductWaste" Role="ProductWaste" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Waste">
+              <PropertyRef Name="WasteId" />
+            </Principal>
+            <Dependent Role="ProductWaste">
+              <PropertyRef Name="WasteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RecipeWaste_Recipe">
+          <End Type="RecipiesModelNS.Recipe" Role="Recipe" Multiplicity="0..1" />
+          <End Type="RecipiesModelNS.RecipeWaste" Role="RecipeWaste" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recipe">
+              <PropertyRef Name="RecipeId" />
+            </Principal>
+            <Dependent Role="RecipeWaste">
+              <PropertyRef Name="RecipeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RecipeWaste_Waste">
+          <End Type="RecipiesModelNS.Waste" Role="Waste" Multiplicity="1" />
+          <End Type="RecipiesModelNS.RecipeWaste" Role="RecipeWaste" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Waste">
+              <PropertyRef Name="WasteId" />
+            </Principal>
+            <Dependent Role="RecipeWaste">
+              <PropertyRef Name="WasteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductWaste_UnitMeasure">
+          <End Type="RecipiesModelNS.UnitMeasure" Role="UnitMeasure" Multiplicity="0..1" />
+          <End Type="RecipiesModelNS.Waste" Role="Waste" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitMeasure">
+              <PropertyRef Name="UnitMeasureId" />
+            </Principal>
+            <Dependent Role="Waste">
+              <PropertyRef Name="UnitMeasureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ProductInventoryHeader">
+          <Key>
+            <PropertyRef Name="ProductInventoryHeaderId" />
+          </Key>
+          <Property Name="ProductInventoryHeaderId" Type="Int32" Nullable="false"
+                    annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ForDate" Type="DateTime" Precision="0" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedByUser" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ProductInventories"
+                              Relationship="RecipiesModelNS.FK_ProductInventory_ProductInventoryHeader"
+                              FromRole="ProductInventoryHeader" ToRole="ProductInventory" />
+        </EntityType>
+        <Association Name="FK_ProductInventory_ProductInventoryHeader">
+          <End Type="RecipiesModelNS.ProductInventoryHeader" Role="ProductInventoryHeader" Multiplicity="0..1" />
+          <End Type="RecipiesModelNS.ProductInventory" Role="ProductInventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductInventoryHeader">
+              <PropertyRef Name="ProductInventoryHeaderId" />
+            </Principal>
+            <Dependent Role="ProductInventory">
+              <PropertyRef Name="ProductInventoryHeaderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ProductIngredient">
+          <Key>
+            <PropertyRef Name="ProductIngredientId" />
+          </Key>
+          <Property Name="ProductIngredientId" Type="Int32" Nullable="false"
+                    annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RecipeId" Type="Int32" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="QuantityPerPortion" Type="Double" />
+          <Property Name="Cost" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedByUser" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="TotalValue" Type="Double" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Product" Relationship="RecipiesModelNS.FK_RecipeIngredient_Product1"
+                              FromRole="ProductIngredient" ToRole="Product" />
+          <NavigationProperty Name="Recipe" Relationship="RecipiesModelNS.FK_RecipeIngredient_Recipe1"
+                              FromRole="ProductIngredient" ToRole="Recipe" />
+        </EntityType>
+        <Association Name="FK_RecipeIngredient_Product1">
+          <End Type="RecipiesModelNS.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="RecipiesModelNS.ProductIngredient" Role="ProductIngredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="ProductIngredient">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RecipeIngredient_Recipe1">
+          <End Type="RecipiesModelNS.Recipe" Role="Recipe" Multiplicity="0..1" />
+          <End Type="RecipiesModelNS.ProductIngredient" Role="ProductIngredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recipe">
+              <PropertyRef Name="RecipeId" />
+            </Principal>
+            <Dependent Role="ProductIngredient">
+              <PropertyRef Name="RecipeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="RecipeIngredient">
+          <Key>
+            <PropertyRef Name="RecipeIngredientId" />
+          </Key>
+          <Property Name="RecipeIngredientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentRecipeId" Type="Int32" />
+          <Property Name="IngredientRecipeId" Type="Int32" />
+          <Property Name="QuantityPerPortion" Type="Double" />
+          <Property Name="Cost" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedByUser" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="TotalValue" Type="Double" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="IngredientRecipe"
+                              Relationship="RecipiesModelNS.FK_RecipeIngredient_IngredientRecipe"
+                              FromRole="RecipeIngredient" ToRole="Recipe" />
+          <NavigationProperty Name="ParentRecipe" Relationship="RecipiesModelNS.FK_RecipeIngredient_ParentRecipe"
+                              FromRole="RecipeIngredient" ToRole="Recipe" />
+        </EntityType>
+        <Association Name="FK_RecipeIngredient_IngredientRecipe">
+          <End Type="RecipiesModelNS.Recipe" Role="Recipe" Multiplicity="0..1" />
+          <End Type="RecipiesModelNS.RecipeIngredient" Role="RecipeIngredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recipe">
+              <PropertyRef Name="RecipeId" />
+            </Principal>
+            <Dependent Role="RecipeIngredient">
+              <PropertyRef Name="IngredientRecipeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RecipeIngredient_ParentRecipe">
+          <End Type="RecipiesModelNS.Recipe" Role="Recipe" Multiplicity="0..1" />
+          <End Type="RecipiesModelNS.RecipeIngredient" Role="RecipeIngredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recipe">
+              <PropertyRef Name="RecipeId" />
+            </Principal>
+            <Dependent Role="RecipeIngredient">
+              <PropertyRef Name="ParentRecipeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="C__RecipiesDataBase">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="databaseName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="ProductWasteHeader">
+          <Key>
+            <PropertyRef Name="ProductWasteHeaderId" />
+          </Key>
+          <Property Name="ProductWasteHeaderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ForDate" Type="DateTime" Precision="0" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedByUser" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ProductWastes" Relationship="RecipiesModelNS.FK_ProductWaste_ProductWasteHeader" FromRole="ProductWasteHeader" ToRole="ProductWaste" />
+        </EntityType>
+        <Association Name="FK_ProductWaste_ProductWasteHeader">
+          <End Type="RecipiesModelNS.ProductWasteHeader" Role="ProductWasteHeader" Multiplicity="0..1" />
+          <End Type="RecipiesModelNS.ProductWaste" Role="ProductWaste" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductWasteHeader">
+              <PropertyRef Name="ProductWasteHeaderId" />
+            </Principal>
+            <Dependent Role="ProductWaste">
+              <PropertyRef Name="ProductWasteHeaderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RecipiesModelNSStoreContainer"
+                                CdmEntityContainer="RecipiesEntities">
+          <EntitySetMapping Name="EmailTemplates">
+            <EntityTypeMapping TypeName="RecipiesModelNS.EmailTemplate">
+              <MappingFragment StoreEntitySet="EmailTemplate">
+                <ScalarProperty Name="ModifiedByUser" ColumnName="ModifiedByUser" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+                <ScalarProperty Name="AttachmentName" ColumnName="AttachmentName" />
+                <ScalarProperty Name="HtmlBody" ColumnName="HtmlBody" />
+                <ScalarProperty Name="TextBody" ColumnName="TextBody" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Bcc" ColumnName="Bcc" />
+                <ScalarProperty Name="Cc" ColumnName="Cc" />
+                <ScalarProperty Name="From" ColumnName="From" />
+                <ScalarProperty Name="EmailTemplateId" ColumnName="EmailTemplateId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="RecipiesModelNS.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="ModifiedByUser" ColumnName="ModifiedByUser" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="RecipiesModelNS.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ModifiedByUser" ColumnName="ModifiedByUser" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="PreviousExperience" ColumnName="PreviousExperience" />
+                <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeDepartments">
+            <EntityTypeMapping TypeName="RecipiesModelNS.EmployeeDepartment">
+              <MappingFragment StoreEntitySet="EmployeeDepartment">
+                <ScalarProperty Name="ModifiedByUser" ColumnName="ModifiedByUser" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="ShiftId" ColumnName="ShiftId" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="EmployeeDepartmentId" ColumnName="EmployeeDepartmentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shifts">
+            <EntityTypeMapping TypeName="RecipiesModelNS.Shift">
+              <MappingFragment StoreEntitySet="Shift">
+                <ScalarProperty Name="ModifiedByUser" ColumnName="ModifiedByUser" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="EndHour" ColumnName="EndHour" />
+                <ScalarProperty Name="StartHour" ColumnName="StartHour" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ShiftId" ColumnName="ShiftId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inventories">
+            <EntityTypeMapping TypeName="IsTypeOf(RecipiesModelNS.Inventory)">
+              <MappingFragment StoreEntitySet="Inventory">
+                <ScalarProperty Name="InventoryId" ColumnName="InventoryId" />
+                <ScalarProperty Name="ForDate" ColumnName="ForDate" />
+                <ScalarProperty Name="AverageUnitPrice" ColumnName="AverageUnitPrice" />
+                <ScalarProperty Name="QuantityByDocuments" ColumnName="QuantityByDocuments" />
+                <ScalarProperty Name="ValueByDocuments" ColumnName="ValueByDocuments" />
+                <ScalarProperty Name="StocktakeQuantity" ColumnName="StocktakeQuantity" />
+                <ScalarProperty Name="StocktakeValue" ColumnName="StocktakeValue" />
+                <ScalarProperty Name="DeficiencyQuantity" ColumnName="DeficiencyQuantity" />
+                <ScalarProperty Name="DeficiencyValue" ColumnName="DeficiencyValue" />
+                <ScalarProperty Name="SurplusQuantity" ColumnName="SurplusQuantity" />
+                <ScalarProperty Name="SurplusValue" ColumnName="SurplusValue" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedByUser" ColumnName="ModifiedByUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(RecipiesModelNS.ProductInventory)">
+              <MappingFragment StoreEntitySet="ProductInventory">
+                <ScalarProperty Name="ProductInventoryHeaderId" ColumnName="ProductInventoryHeaderId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="InventoryId" ColumnName="InventoryId" />
+
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(RecipiesModelNS.RecipeInventory)">
+              <MappingFragment StoreEntitySet="RecipeInventory">
+                <ScalarProperty Name="RecipeId" ColumnName="RecipeId" />
+                <ScalarProperty Name="InventoryId" ColumnName="InventoryId" />
+
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="RecipiesModelNS.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="StockValue" ColumnName="StockValue" />
+                <ScalarProperty Name="ModifiedByUser" ColumnName="ModifiedByUser" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ReorderLevel" ColumnName="ReorderLevel" />
+                <ScalarProperty Name="UnitsOnOrder" ColumnName="UnitsOnOrder" />
+                <ScalarProperty Name="UnitsInStock" ColumnName="UnitsInStock" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="UnitMeasureId" ColumnName="UnitMeasureId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductCategories">
+            <EntityTypeMapping TypeName="RecipiesModelNS.ProductCategory">
+              <MappingFragment StoreEntitySet="ProductCategory">
+                <ScalarProperty Name="ModifiedByUser" ColumnName="ModifiedByUser" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductHistories">
+            <EntityTypeMapping TypeName="RecipiesModelNS.ProductHistory">
+              <MappingFragment StoreEntitySet="ProductHistory">
+                <ScalarProperty Name="ModifiedByUser" ColumnName="ModifiedByUser" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ReorderLevel" ColumnName="ReorderLevel" />
+                <ScalarProperty Name="Store" ColumnName="Store" />
+                <ScalarProperty Name="UnitsOnOrder" ColumnName="UnitsOnOrder" />
+                <ScalarProperty Name="UnitsInStock" ColumnName="UnitsInStock" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="UnitMeasureId" ColumnName="UnitMeasureId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductHistoryId" ColumnName="ProductHistoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Recipes">
+            <EntityTypeMapping TypeName="RecipiesModelNS.Recipe">
+              <MappingFragment StoreEntitySet="Recipe">
+                <ScalarProperty Name="GrossProfit" ColumnName="GrossProfit" />
+                <ScalarProperty Name="SellValuePerPortion" ColumnName="SellValuePerPortion" />
+                <ScalarProperty Name="ModifiedByUser" ColumnName="ModifiedByUser" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ProductionValuePerPortion" ColumnName="ProductionValuePerPortion" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="RecipeId" ColumnName="RecipeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stores">
+            <EntityTypeMapping TypeName="RecipiesModelNS.Store">
+              <MappingFragment StoreEntitySet="Store">
+                <ScalarProperty Name="ModifiedByUser" ColumnName="ModifiedByUser" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnitMeasures">
+            <EntityTypeMapping TypeName="RecipiesModelNS.UnitMeasure">
+              <MappingFragment StoreEntitySet="UnitMeasure">
+                <ScalarProperty Name="ModifiedByUser" ColumnName="ModifiedByUser" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="BaseUnitFactor" ColumnName="BaseUnitFactor" />
+                <ScalarProperty Name="BaseUnitId" ColumnName="BaseUnitId" />
+                <ScalarProperty Name="IsBaseUnit" ColumnName="IsBaseUnit" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UnitMeasureId" ColumnName="UnitMeasureId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductVendors">
+            <EntityTypeMapping TypeName="RecipiesModelNS.ProductVendor">
+              <MappingFragment StoreEntitySet="ProductVendor">
+                <ScalarProperty Name="ModifiedByUser" ColumnName="ModifiedByUser" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="OnOrderQuantity" ColumnName="OnOrderQuantity" />
+                <ScalarProperty Name="MaxOrderQuantity" ColumnName="MaxOrderQuantity" />
+                <ScalarProperty Name="MinOrderQuantity" ColumnName="MinOrderQuantity" />
+                <ScalarProperty Name="LastReceiptDate" ColumnName="LastReceiptDate" />
+                <ScalarProperty Name="LastReceiptCost" ColumnName="LastReceiptCost" />
+                <ScalarProperty Name="StandardPrice" ColumnName="StandardPrice" />
+                <ScalarProperty Name="AverageLeadTime" ColumnName="AverageLeadTime" />
+                <ScalarProperty Name="UnitMeasureId" ColumnName="UnitMeasureId" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductVendorId" ColumnName="ProductVendorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseOrderDetails">
+            <EntityTypeMapping TypeName="RecipiesModelNS.PurchaseOrderDetail">
+              <MappingFragment StoreEntitySet="PurchaseOrderDetail">
+                <ScalarProperty Name="ModifiedByUser" ColumnName="ModifiedByUser" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="StockedQuantity" ColumnName="StockedQuantity" />
+                <ScalarProperty Name="ReturnedQuantity" ColumnName="ReturnedQuantity" />
+                <ScalarProperty Name="ReceivedQuantity" ColumnName="ReceivedQuantity" />
+                <ScalarProperty Name="LineTotal" ColumnName="LineTotal" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="OrderQuantity" ColumnName="OrderQuantity" />
+                <ScalarProperty Name="UnitMeasureId" ColumnName="UnitMeasureId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="PurchaseOrderId" ColumnName="PurchaseOrderId" />
+                <ScalarProperty Name="PurchaseOrderDetailId" ColumnName="PurchaseOrderDetailId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseOrderHeaders">
+            <EntityTypeMapping TypeName="RecipiesModelNS.PurchaseOrderHeader">
+              <MappingFragment StoreEntitySet="PurchaseOrderHeader">
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="ModifiedByUser" ColumnName="ModifiedByUser" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
+                <ScalarProperty Name="TotalDue" ColumnName="TotalDue" />
+                <ScalarProperty Name="Freight" ColumnName="Freight" />
+                <ScalarProperty Name="VAT" ColumnName="VAT" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="ShipDate" ColumnName="ShipDate" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="ShipMethodId" ColumnName="ShipMethodId" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="PurchaseOrderId" ColumnName="PurchaseOrderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseOrderStatus">
+            <EntityTypeMapping TypeName="RecipiesModelNS.PurchaseOrderStatu">
+              <MappingFragment StoreEntitySet="PurchaseOrderStatus">
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="ModifiedByUser" ColumnName="ModifiedByUser" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PurchaseOrderStatusId" ColumnName="PurchaseOrderStatusId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShipMethods">
+            <EntityTypeMapping TypeName="RecipiesModelNS.ShipMethod">
+              <MappingFragment StoreEntitySet="ShipMethod">
+                <ScalarProperty Name="ModifiedByUser" ColumnName="ModifiedByUser" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ShipRate" ColumnName="ShipRate" />
+                <ScalarProperty Name="ShipBase" ColumnName="ShipBase" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ShipMethodId" ColumnName="ShipMethodId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vendors">
+            <EntityTypeMapping TypeName="RecipiesModelNS.Vendor">
+              <MappingFragment StoreEntitySet="Vendor">
+                <ScalarProperty Name="ModifiedByUser" ColumnName="ModifiedByUser" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="HomePage" ColumnName="HomePage" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ReportAccountNumber" ColumnName="ReportAccountNumber" />
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="RecipiesModelNS.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="ModifiedByUser" ColumnName="ModifiedByUser" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentTypes">
+            <EntityTypeMapping TypeName="RecipiesModelNS.PaymentType">
+              <MappingFragment StoreEntitySet="PaymentType">
+                <ScalarProperty Name="ModifiedByUser" ColumnName="ModifiedByUser" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PaymentTypeId" ColumnName="PaymentTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesOrderDetails">
+            <EntityTypeMapping TypeName="RecipiesModelNS.SalesOrderDetail">
+              <MappingFragment StoreEntitySet="SalesOrderDetail">
+                <ScalarProperty Name="ModifiedByUser" ColumnName="ModifiedByUser" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="LineTotal" ColumnName="LineTotal" />
+                <ScalarProperty Name="UnitPriceDiscount" ColumnName="UnitPriceDiscount" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="OrderQuantity" ColumnName="OrderQuantity" />
+                <ScalarProperty Name="RecipeId" ColumnName="RecipeId" />
+                <ScalarProperty Name="SalesOrderHeaderId" ColumnName="SalesOrderHeaderId" />
+                <ScalarProperty Name="SalesOrderDetailId" ColumnName="SalesOrderDetailId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesOrderHeaders">
+            <EntityTypeMapping TypeName="RecipiesModelNS.SalesOrderHeader">
+              <MappingFragment StoreEntitySet="SalesOrderHeader">
+                <ScalarProperty Name="TotalDue" ColumnName="TotalDue" />
+                <ScalarProperty Name="Freight" ColumnName="Freight" />
+                <ScalarProperty Name="TaxAmt" ColumnName="TaxAmt" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="ModifiedByUser" ColumnName="ModifiedByUser" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ShipAddress" ColumnName="ShipAddress" />
+                <ScalarProperty Name="ShipName" ColumnName="ShipName" />
+                <ScalarProperty Name="ShippedDate" ColumnName="ShippedDate" />
+                <ScalarProperty Name="RequiredDate" ColumnName="RequiredDate" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+                <ScalarProperty Name="PaymentTypeId" ColumnName="PaymentTypeId" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="SalesOrderHeaderId" ColumnName="SalesOrderHeaderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesOrderStatus">
+            <EntityTypeMapping TypeName="RecipiesModelNS.SalesOrderStatu">
+              <MappingFragment StoreEntitySet="SalesOrderStatus">
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="ModifiedByUser" ColumnName="ModifiedByUser" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SalesOrderStatusId" ColumnName="SalesOrderStatusId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wastes">
+            <EntityTypeMapping TypeName="IsTypeOf(RecipiesModelNS.Waste)">
+              <MappingFragment StoreEntitySet="Waste">
+                <ScalarProperty Name="WasteId" ColumnName="WasteId" />
+                <ScalarProperty Name="ModifiedByUser" ColumnName="ModifiedByUser" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="WasteValue" ColumnName="WasteValue" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="UnitMeasureId" ColumnName="UnitMeasureId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(RecipiesModelNS.RecipeWaste)">
+              <MappingFragment StoreEntitySet="RecipeWaste">
+                <ScalarProperty Name="WasteId" ColumnName="WasteId" />
+                <ScalarProperty Name="RecipeId" ColumnName="RecipeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(RecipiesModelNS.ProductWaste)">
+              <MappingFragment StoreEntitySet="ProductWaste">
+                <ScalarProperty Name="ProductWasteHeaderId" ColumnName="ProductWasteHeaderId" />
+                <ScalarProperty Name="WasteId" ColumnName="WasteId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductInventoryHeaders">
+            <EntityTypeMapping TypeName="RecipiesModelNS.ProductInventoryHeader">
+              <MappingFragment StoreEntitySet="ProductInventoryHeader">
+                <ScalarProperty Name="ModifiedByUser" ColumnName="ModifiedByUser" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ForDate" ColumnName="ForDate" />
+                <ScalarProperty Name="ProductInventoryHeaderId" ColumnName="ProductInventoryHeaderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductIngredients">
+            <EntityTypeMapping TypeName="RecipiesModelNS.ProductIngredient">
+              <MappingFragment StoreEntitySet="ProductIngredient">
+                <ScalarProperty Name="TotalValue" ColumnName="TotalValue" />
+                <ScalarProperty Name="ModifiedByUser" ColumnName="ModifiedByUser" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="QuantityPerPortion" ColumnName="QuantityPerPortion" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="RecipeId" ColumnName="RecipeId" />
+                <ScalarProperty Name="ProductIngredientId" ColumnName="ProductIngredientId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RecipeIngredients">
+            <EntityTypeMapping TypeName="RecipiesModelNS.RecipeIngredient">
+              <MappingFragment StoreEntitySet="RecipeIngredient">
+                <ScalarProperty Name="TotalValue" ColumnName="TotalValue" />
+                <ScalarProperty Name="ModifiedByUser" ColumnName="ModifiedByUser" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="QuantityPerPortion" ColumnName="QuantityPerPortion" />
+                <ScalarProperty Name="IngredientRecipeId" ColumnName="IngredientRecipeId" />
+                <ScalarProperty Name="ParentRecipeId" ColumnName="ParentRecipeId" />
+                <ScalarProperty Name="RecipeIngredientId" ColumnName="RecipeIngredientId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C__RecipiesDataBase">
+            <EntityTypeMapping TypeName="RecipiesModelNS.C__RecipiesDataBase">
+              <MappingFragment StoreEntitySet="__RecipiesDataBase">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="databaseName" ColumnName="databaseName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductWasteHeaders">
+            <EntityTypeMapping TypeName="RecipiesModelNS.ProductWasteHeader">
+              <MappingFragment StoreEntitySet="ProductWasteHeader">
+                <ScalarProperty Name="ModifiedByUser" ColumnName="ModifiedByUser" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ForDate" ColumnName="ForDate" />
+                <ScalarProperty Name="ProductWasteHeaderId" ColumnName="ProductWasteHeaderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

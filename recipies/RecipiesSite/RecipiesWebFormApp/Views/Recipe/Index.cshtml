@@ -1,0 +1,68 @@
+﻿@using InventoryManagementMVC.Extensions
+@using InventoryManagementMVC.Models;
+
+@model IEnumerable<RecipeViewModel>
+
+@(
+        Html.Kendo().Grid(Model)
+            .Name("RecipeViewModelGrid")
+            .AddDefaultOptions()
+            .DataSource(dataSource => dataSource
+                .Ajax()
+                .Create("Create", "Recipe")
+                .Read("Read", "Recipe")
+                .Update("Update", "Recipe")
+                .Destroy("Destroy", "Recipe"))
+            .ClientDetailTemplateId("template")
+      )
+
+<script id="template" type="text/kendo-tmpl">
+    @(Html.Kendo().TabStrip()
+          .Name("tabStrip_#=RecipeId#")
+          .SelectedIndex(0)
+          .Animation(animation => animation.Open(open => open.Fade(FadeDirection.In).Duration(AnimationDuration.Fast)))
+          .Items(items =>
+          {
+              items.Add().Text("Products").Content(@<text>
+                    @(Html.Kendo().Grid<ProductIngredientViewModel>()
+                          .Name("ProductIngredientViewModelGrid_#=RecipeId#")
+                          .AddDefaultOptions(true, false)
+                          .DataSource(dataSource => dataSource
+                              .Ajax()
+                              .Batch(true)
+                              .PageSize(5)
+                              .Model(m => m.Id(p => p.ProductIngredientId))
+                              .Read(read => read.Action("Read", "ProductIngredient", new {recipeId = "#=RecipeId#"}))
+                              .Create("Create", "ProductIngredient", new {recipeId = "#=RecipeId#"})
+                              .Update("Update", "ProductIngredient")
+                              .Destroy("Destroy", "ProductIngredient")
+                          )
+                          .ToClientTemplate()
+                          .ToMvcClientTemplate()
+                          )
+                </text>
+                  );
+
+
+              items.Add().Text("Recipies").Content(@<text>
+                    @(Html.Kendo().Grid<RecipeIngredientViewModel>()
+                          .Name("RecipeIngredientViewModelGrid_#=RecipeId#")
+                          .AddDefaultOptions(true, false)
+                          .DataSource(dataSource => dataSource
+                              .Ajax()
+                              .Batch(true)
+                              .PageSize(5)
+                              .Model(m => m.Id(p => p.RecipeIngredientId))
+                              .Read(read => read.Action("Read", "RecipeIngredient", new {recipeId = "#=RecipeId#"}))
+                              .Create("Create", "RecipeIngredient", new {recipeId = "#=RecipeId#"})
+                              .Update("Update", "RecipeIngredient")
+                              .Destroy("Destroy", "RecipeIngredient")
+                          )
+                          .ToClientTemplate()
+                          .ToMvcClientTemplate()
+                          )
+                </text>
+                  );
+          })
+          .ToClientTemplate())
+</script>

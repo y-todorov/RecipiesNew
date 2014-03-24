@@ -1,0 +1,43 @@
+﻿@using InventoryManagementMVC.Extensions
+@using InventoryManagementMVC.Models.Purchasing;
+@using InventoryManagementMVC.Models;
+
+
+@model IEnumerable<SalesOrderHeaderViewModel>
+
+@(
+        Html.Kendo().Grid(Model)
+            .Name("SalesOrderHeaderViewModelGrid")
+            .AddDefaultOptions()
+            .DataSource(dataSource => dataSource
+                .Ajax()
+                .Read("Read", "SalesOrderHeader")
+                .Create("Create", "SalesOrderHeader")
+                .Update("Update", "SalesOrderHeader")
+                .Destroy("Destroy", "SalesOrderHeader")
+            )
+            .ClientDetailTemplateId("template")
+      )
+
+
+<script id="template" type="text/kendo-tmpl">
+    @(Html.Kendo().Grid<SalesOrderDetailViewModel>()
+          .Name("SalesOrderDetailViewModel_#=SalesOrderHeaderId#")
+          .AddDefaultOptions(true, false)
+          .DataSource(dataSource => dataSource
+              .Ajax()
+              .Batch(true)
+              .PageSize(5).Model(m => m.Id(p => p.SalesOrderHeaderId))
+              .Read(read => read.Action("Read", "SalesOrderDetail", new {salesOrderHeaderId = "#=SalesOrderHeaderId#"}))
+              .Create("Create", "SalesOrderDetail", new {salesOrderHeaderId = "#=SalesOrderHeaderId#"})
+              .Update("Update", "SalesOrderDetail")
+              .Destroy("Destroy", "SalesOrderDetail")
+          )
+          .ToClientTemplate()
+
+
+
+          )
+
+
+</script>

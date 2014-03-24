@@ -1,0 +1,16 @@
+﻿@using InventoryManagementMVC.Extensions
+@using InventoryManagementMVC.Models;
+
+@model IEnumerable<ShipMethodViewModel>
+
+@(
+        Html.Kendo().Grid(Model)
+            .Name("ShipMethodViewModelGrid")
+            .AddDefaultOptions()
+            .DataSource(dataSource => dataSource
+                .Ajax()
+                .Create("Create", "ShipMethod")
+                .Read("Read", "ShipMethod")
+                .Update("Update", "ShipMethod")
+                .Destroy("Destroy", "ShipMethod"))
+      )

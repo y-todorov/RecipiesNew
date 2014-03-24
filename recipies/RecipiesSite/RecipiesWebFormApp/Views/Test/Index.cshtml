@@ -1,0 +1,127 @@
+﻿@using InventoryManagementMVC.Extensions
+@using InventoryManagementMVC.Models;
+@using RecipiesModelNS;
+
+
+@model IEnumerable<ProductViewModel>
+
+@(
+        Html.Kendo().Grid(Model)
+            .Name("ProductViewModelGrid")
+            .Columns(columns =>
+            {
+                columns.Bound(p => p.Name)
+                    .ClientFooterTemplate("Total Count: #=count#")
+                    .ClientGroupFooterTemplate("Count: #=count#");
+                columns.Bound(p => p.UnitPrice).Format("{0:C}");
+                columns.Bound(p => p.UnitsOnOrder)
+                    .ClientFooterTemplate("Average: #=average#")
+                    .ClientGroupFooterTemplate("Average: #=average#");
+                columns.Bound(p => p.UnitsInStock)
+                    //.ClientGroupHeaderTemplate("Units In Stock: #= value # (Count: #= count#)")
+                    .ClientFooterTemplate("<div>Min: #= min #</div><div>Max: #= max #</div>");
+                columns.Command(d => d.Destroy());
+            })
+            .Groupable()
+            .Filterable()
+            .Pageable()
+            .Sortable()
+            .DataSource(dataSource => dataSource
+                .Ajax()
+                .ServerOperation(false)
+                .Model(m => m.Id(a => a.ProductId))
+                .Aggregates(aggregates =>
+                {
+                    aggregates.Add(p => p.UnitsInStock).Min().Max().Count();
+                    aggregates.Add(p => p.UnitsOnOrder).Average();
+                    aggregates.Add(p => p.Name).Count();
+                    aggregates.Add(p => p.UnitPrice).Sum();
+                })
+                //.Group(groups => groups.Add(p => p.UnitsInStock))
+                .Read(read => read.Action("Read", "Test"))
+                .Destroy("Destroy", "Test"))
+            .ClientDetailTemplateId("template")
+      )
+
+@(
+        Html.ActionLink("Execute me", "ExecuteSomeAction")
+      )
+
+
+
+<script id="template" type="text/kendo-tmpl">
+    @(
+        Html.Kendo().Grid<ProductViewModel>()
+            .Name("ProductViewModelGrid_#=ProductId#")
+            .ToolBar(t => t.Create())
+            .Columns(columns =>
+            {
+                columns.Bound(p => p.Name)
+                    .ClientFooterTemplate("Count: \\#=count\\#");
+                //.FooterTemplate(@<text>Count: @item.Count</text>)
+                //.GroupFooterTemplate(@<text>Count: @item.Count</text>);
+                //.ClientGroupFooterTemplate("Count: #=count#")
+                //.ClientGroupFooterTemplate(@<text>Count: @item.Count</text>);
+        @*columns.Bound(p => p.UnitPrice).Format("{0:C}");
+            columns.Bound(p => p.UnitsOnOrder)
+                .FooterTemplate(@<text>Average: @item.Average</text>);
+                //.GroupFooterTemplate(@<text>Average: @item.Average</text>);
+            columns.Bound(p => p.UnitsInStock)
+                .FooterTemplate(@<text>
+                    <div>Min: @item.Min </div>
+                    <div>Max: @item.Max </div></text>)
+                .GroupHeaderTemplate(@<text>@item.Title: @item.Key (Count: @item.Count)</text>);*@
+            })
+            .Pageable()
+            .Sortable()
+            .Groupable()
+            .DataSource(dataSource => dataSource
+                .Ajax()
+                .Model(m => m.Id(a => a.ProductId))
+                .ServerOperation(false)
+                .Aggregates(aggregates =>
+                {
+                    aggregates.Add(p => p.UnitsInStock).Min().Max().Count();
+                    aggregates.Add(p => p.UnitsOnOrder).Average();
+                    aggregates.Add(p => p.Name).Count();
+                    aggregates.Add(p => p.UnitPrice).Sum();
+                })
+                //.Group(groups => groups.Add(p => p.UnitsInStock)) // THIS IS PROBLEMATIC DO NOT USE THIS
+                .Read(read => read.Action("Read", "Test"))
+                .Create(read => read.Action("Read", "Test"))
+            ).ToClientTemplate()
+          )
+
+
+</script>
+@*@(
+     Html.Kendo().Grid(Model)
+           .Name("Grid")
+        .Columns(columns =>
+        {
+            columns.Bound(p => p.Name)
+                .FooterTemplate(@<text>Total Count: @item.Count</text>)
+                .GroupFooterTemplate(@<text>Count: @item.Count</text>);
+            columns.Bound(p => p.UnitPrice).Format("{0:C}");
+            columns.Bound(p => p.UnitsOnOrder)
+                .FooterTemplate(@<text>Average: @item.Average</text>)
+                .GroupFooterTemplate(@<text>Average: @item.Average</text>);
+            columns.Bound(p => p.UnitsInStock)
+                .FooterTemplate(@<text><div>Min: @item.Min </div><div>Max: @item.Max </div></text>)
+                .GroupHeaderTemplate(@<text>@item.Title: @item.Key (Count: @item.Count)</text>);
+        })
+        .Pageable()
+        .Sortable()
+        .DataSource(dataSource => dataSource
+            .Server()
+            .Aggregates(aggregates =>
+            {
+                aggregates.Add(p => p.UnitsInStock).Min().Max().Count();
+                aggregates.Add(p => p.UnitsOnOrder).Average();
+                aggregates.Add(p => p.Name).Count();
+                aggregates.Add(p => p.UnitPrice).Sum();
+            })
+            .Group(groups => groups.Add(p => p.UnitsInStock))
+            .Read(read => read.Action("Read", "Test"))
+        )
+    )*@

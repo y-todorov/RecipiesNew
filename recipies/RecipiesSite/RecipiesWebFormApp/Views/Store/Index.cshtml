@@ -1,0 +1,17 @@
+﻿@using InventoryManagementMVC.Extensions
+@using RecipiesModelNS;
+
+@model IEnumerable<StoreViewModel>
+
+@(
+        Html.Kendo().Grid(Model)
+            .Name("StoreViewModelGrid")
+            .AddDefaultOptions()
+            .DataSource(dataSource => dataSource
+                .Ajax()
+                .Create("Create", "Store")
+                .Read("Read", "Store")
+                .Update("Update", "Store")
+                .Destroy("Destroy", "Store"))
+       
+      )

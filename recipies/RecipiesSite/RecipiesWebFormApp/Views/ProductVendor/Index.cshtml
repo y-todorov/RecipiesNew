@@ -1,0 +1,16 @@
+﻿@using InventoryManagementMVC.Models
+@using InventoryManagementMVC.Extensions
+
+@model IEnumerable<ProductVendorViewModel>
+
+@(
+        Html.Kendo().Grid(Model)
+            .Name("ProductVendorViewModelGrid")
+            .AddDefaultOptions()
+            .DataSource(dataSource => dataSource
+                .Ajax()
+                .Create("Create", "ProductVendor")
+                .Read("Read", "ProductVendor")
+                .Update("Update", "ProductVendor")
+                .Destroy("Destroy", "ProductVendor"))
+      )

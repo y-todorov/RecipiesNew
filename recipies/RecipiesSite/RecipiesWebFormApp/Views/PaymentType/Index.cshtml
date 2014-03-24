@@ -1,0 +1,16 @@
+﻿@using InventoryManagementMVC.Extensions
+@using InventoryManagementMVC.Models;
+
+@model IEnumerable<PaymentTypeViewModel>
+
+@(
+        Html.Kendo().Grid(Model)
+            .Name("PaymentTypeViewModelGrid")
+            .AddDefaultOptions()
+            .DataSource(dataSource => dataSource
+                .Ajax()
+                .Create("Create", "PaymentType")
+                .Read("Read", "PaymentType")
+                .Update("Update", "PaymentType")
+                .Destroy("Destroy", "PaymentType"))
+      )

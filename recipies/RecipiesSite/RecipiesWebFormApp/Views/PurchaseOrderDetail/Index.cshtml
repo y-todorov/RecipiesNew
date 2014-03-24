@@ -1,0 +1,16 @@
+﻿@using InventoryManagementMVC.Extensions
+@using InventoryManagementMVC.Models;
+@using RecipiesModelNS;
+
+
+@model IEnumerable<PurchaseOrderDetailViewModel>
+
+@(
+        Html.Kendo().Grid(Model)
+            .Name("PurchaseOrderDetailViewModelGrid")
+            .AddReadOnlyOptions()
+            .DataSource(dataSource => dataSource
+                .Ajax()
+                .Read("Read", "PurchaseOrderDetail")
+            )
+      )
