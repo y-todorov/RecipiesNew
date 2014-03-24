@@ -316,9 +316,6 @@
     <Content Include="Images\orderedList9.png" />
     <Content Include="jquery-2.0.3.js" />
     <Content Include="loaderio-30652baccf98dd4b259576ae7897b597.txt" />
-    <Content Include="newrelic\extensions\CoreInstrumentation.xml" />
-    <Content Include="newrelic\NewRelic.Agent.Core.dll" />
-    <Content Include="newrelic\NewRelic.Profiler.dll" />
     <Content Include="packages.config" />
     <Content Include="App_Themes\DefaultTheme\DefaultSkin.skin" />
     <Content Include="Production\ProductInventories.aspx" />
@@ -349,10 +346,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="jquery-2.0.3.min.mapTEST" />
-    <Content Include="newrelic\newrelic.config" />
-    <Content Include="newrelic\extensions\extension.xsd">
-      <SubType>Designer</SubType>
-    </Content>
     <None Include="Properties\PublishProfiles\bluesystems - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\bluesystems - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
